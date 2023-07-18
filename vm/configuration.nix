@@ -82,14 +82,17 @@
       "wheel"
     ];
   };
-  home-manager.users.jamie = { pkgs, ... }: {
-    home.packages = with pkgs; [
-      wget
-      git
-      firefox
-      kate
-    ];
-    programs.bash.enable = true;
+  home-manager = {
+    users.jamie = { pkgs, ... }: {
+      home.packages = with pkgs; [
+        wget
+        git
+        firefox
+        kate
+      ];
+      programs.bash.enable = true;
+    };
+    stateVersion = "23.05";
   };
 
   #### Locale
