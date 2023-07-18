@@ -92,8 +92,8 @@
       ];
       programs.bash.enable = true;
     };
-    stateVersion = "23.05";
   };
+  home.stateVersion = "23.05";
 
   #### Locale
   time.timeZone = "Europe/London";
