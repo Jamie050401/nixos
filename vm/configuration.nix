@@ -1,4 +1,4 @@
-#### Main configuration file for NixOS
+#### Main configuration file for NixOS (for deployment on VMs with a desktop environment)
 #### Author: Jamie
 
 { config, pkgs, ... }:
@@ -7,6 +7,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    <home-manager/nixos>
   ];
 
   #### Boot
@@ -70,9 +71,6 @@
   #### System Packages
   environment.systemPackages = with pkgs; [
     #nano is installed by default
-    bash
-    wget
-    git
   ];
 
   #### Users
@@ -83,9 +81,14 @@
       "networkmanager"
       "wheel"
     ];
-    packages = with pkgs; [
-      firefox
-    ];
+    home-manager.users.jamie = { pkgs, ... }: {
+      home.packages = with pkgs; [
+        wget
+        git
+        firefox
+      ];
+      programs.bash.enable = true;
+    };
   };
 
   #### Locale
@@ -105,8 +108,11 @@
   console.keyMap = "uk";
 
   #### Services
-  #services.openssh.enable = true;
-  services.printing.enable = true;
+  services = {
+    #openssh.enable = true;
+    printing.enable = true;
+    flatpak.enable = true;
+  };
 
   #### Misc
   nixpkgs.config.allowUnfree = true;
@@ -119,6 +125,10 @@
     };
   };
   nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
     settings.auto-optimise-store = true;
     gc = {
       automatic = true;
