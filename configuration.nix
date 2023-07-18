@@ -11,11 +11,19 @@
 
   #### Boot
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    #initrd.kernelModules = [
+    #  "amdgpu"
+    #];
     loader = {
-      grub.enable = true;
-      grub.device = "/dev/sda";
-      grub.useOSProber = true;
+      grub = {
+        enable = true;
+        device = "/dev/sda";
+        useOSProber = true;
+        configurationLimit = 5;
+      };
     };
+    timeout = 5;
   };
 
   #### Windowing System
@@ -102,6 +110,22 @@
 
   #### Misc
   nixpkgs.config.allowUnfree = true;
+  system = {
+    autoUpgrade = {
+      enable = true;
+      allowReboot = false;
+      channel = "https://nixos.org/channels/nixos-23.05";
+      dates = "weekly"
+    };
+  };
+  nix = {
+    settings.auto-optimise-store = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delte-older-than 10d";
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -109,5 +133,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.05";
 }
