@@ -22,8 +22,8 @@
         useOSProber = true;
         configurationLimit = 5;
       };
-    };
     timeout = 5;
+    };
   };
 
   #### Windowing System
@@ -115,7 +115,7 @@
       enable = true;
       allowReboot = false;
       channel = "https://nixos.org/channels/nixos-23.05";
-      dates = "weekly"
+      dates = "weekly";
     };
   };
   nix = {
