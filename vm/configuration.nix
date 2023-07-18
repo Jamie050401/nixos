@@ -90,6 +90,7 @@
         firefox
         kate
       ];
+      home.stateVersion = "23.05";
       programs.bash.enable = true;
     };
   };
