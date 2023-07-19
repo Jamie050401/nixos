@@ -113,6 +113,11 @@
         # 3. Stable Diffusion (maybe running in a docker container?)
         # 4. NT Lite
 
+        ## Flatpak
+        # 1. Flatseal
+        # 2. Discord
+        # 3. MEGASync
+
         ## Pre-reqs
         python311Full
         temurin-jre-bin-18
@@ -137,7 +142,6 @@
         otpclient # WinAuth alternative
         wireguard-go
         protonmail-bridge
-        #megasync
         pcloud
         go-sct # f.lux alternative
         flameshot # ShareX alternative
