@@ -20,6 +20,8 @@ This is the directory where the .nix configuration files exist.
    - Only rebuilds the NixOS configuration.  
    - --upgrade  
      - The upgrade argument fetches the latest updates from active channels.  
+   - --flake  .#{host}
+     - Rebuilds using the flake.nix file for the specified host.  
 
 5. nix-channel  
    - --list  
