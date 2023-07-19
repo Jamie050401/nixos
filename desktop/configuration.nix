@@ -139,7 +139,7 @@
         otpclient # WinAuth alternative
         wireguard-go
         protonmail-bridge
-        megasync
+        #megasync
         pcloud
         go-sct # f.lux alternative
         flameshot # ShareX alternative
