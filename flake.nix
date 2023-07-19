@@ -5,15 +5,14 @@
         nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     };
 
-    outputs = { self, nixpkgs }: {
+    outputs = { self, nixpkgs }:
         let
             system = "x86_64-linux";
             pkgs = import nixpkgs {
                 inherit system;
                 config.allowUnfree = true;
             };
-
-            lib = nixpkgs.lib
+            lib = nixpkgs.lib;
         in {
             nixosConfigurations = {
                 nixos-desktop = lib.nixosSystem {
@@ -24,5 +23,4 @@
                 };
             };
         };
-    };
 }
