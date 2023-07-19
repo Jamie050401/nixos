@@ -84,8 +84,15 @@
 
   #### System Packages
   environment.systemPackages = with pkgs; [
-    #nano is installed by default
+    # ...
   ];
+
+  #### System Services
+  services = {
+    #openssh.enable = true;
+    printing.enable = true;
+    flatpak.enable = true;
+  };
 
   #### Users
   users.users.jamie = {
@@ -97,14 +104,72 @@
     ];
   };
   home-manager = {
+    useGlobalPkgs = true;
     users.jamie = { pkgs, ... }: {
       home.packages = with pkgs; [
+        ## TODO
+        # 1. VorpX
+        # 2. VKB Configurator
+        # 3. Stable Diffusion (maybe running in a docker container?)
+        # 4. NT Lite
+
+        ## Flatpak
+        # 1. Flatseal
+        # 2. Discord
+        # 3. MEGASync
+
+        ## Pre-reqs
         python311Full
+        temurin-jre-bin-18
+        dotnet-sdk_7
         wget
         git
+        rclone
+        
+        ## General
         firefox
-        kate
+        thunderbird # Email client
+        kate # Text editor
+        libsForQt5.kdenlive # Video editor
+        obs-studio
+        mullvad-vpn
+        transmission
+        vlc
+        spotify
+        
+        ## Utilities
+        keepassxc
+        otpclient # WinAuth alternative
+        wireguard-go
+        protonmail-bridge
+        pcloud
+        go-sct # f.lux alternative
+        flameshot # ShareX alternative
+        hwinfo
+        docker
+        docker-compose
+        distrobox
+
+        ## Gaming
+        wine64
+        winetricks
+        protonup-qt
+        protontricks
+        lutris
+        steam
+        ryujinx
+        yuzu-mainline
+        citra-nightly
+        prismlauncher-qt5
+
+        ## Development
+        kdiff3
+        vscodium # Add GitLens to vs code instead of Git Extensions
       ];
+      home.file = {
+        # Can be used to capture dotfiles
+        # ...
+      };
       home.stateVersion = "23.05";
       programs.bash.enable = true;
     };
@@ -125,13 +190,6 @@
     LC_TIME = "en_GB.UTF-8";
   };
   console.keyMap = "uk";
-
-  #### Services
-  services = {
-    #openssh.enable = true;
-    printing.enable = true;
-    flatpak.enable = true;
-  };
 
   #### Misc
   nixpkgs.config.allowUnfree = true;
