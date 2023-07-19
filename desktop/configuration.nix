@@ -115,8 +115,8 @@
 
         ## Pre-reqs
         python311Full
-        dotnet-runtime_7
         temurin-jre-bin-18
+        dotnet-sdk_7
         wget
         git
         rclone
@@ -160,7 +160,6 @@
 
         ## Development
         kdiff3
-        dotnet-sdk_7
         vscodium # Add GitLens to vs code instead of Git Extensions
       ];
       home.file = {
