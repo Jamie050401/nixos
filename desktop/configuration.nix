@@ -104,6 +104,7 @@
     ];
   };
   home-manager = {
+    useGlobalPkgs = true;
     users.jamie = { pkgs, ... }: {
       home.packages = with pkgs; [
         ## TODO
