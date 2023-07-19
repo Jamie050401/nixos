@@ -164,7 +164,7 @@
 
         ## Development
         kdiff3
-        vscodium # Add GitLens to vs code instead of Git Extensions
+        vscodium
       ];
       home.file = {
         # Can be used to capture dotfiles
