@@ -39,6 +39,6 @@
         { device = "/dev/disk/by-uuid/33838817-6e8a-4efe-8980-1ce0c93cb7f9"; }
     ];
 
-    networking.useDHCP = lib.mkDefault = true;
+    networking.useDHCP = lib.mkDefault true;
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
