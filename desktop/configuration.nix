@@ -147,7 +147,6 @@
         distrobox
 
         ## Gaming
-        wine
         wine64
         winetricks
         protonup-qt
