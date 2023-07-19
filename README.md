@@ -22,6 +22,7 @@ This is the directory where the .nix configuration files exist.
      - The upgrade argument fetches the latest updates from active channels.  
    - --flake  .#{host}
      - Rebuilds using the flake.nix file for the specified host.  
+     - If host is left blank, it will look for one that matches the systems hostname.  
 
 5. nix-channel  
    - --list  
