@@ -82,30 +82,6 @@
     };
   };
 
-  #### Misc
-  nixpkgs.config.allowUnfree = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
-  system = {
-    autoUpgrade = {
-      enable = true;
-      allowReboot = false;
-      channel = "https://nixos.org/channels/nixos-23.05";
-      dates = "weekly";
-    };
-  };
-  nix = {
-    package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    settings.auto-optimise-store = true;
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delte-older-than 10d";
-    };
-  };
-
   #### System Packages
   environment.systemPackages = with pkgs; [
     # ...
@@ -155,13 +131,14 @@
         mullvad-vpn
         transmission
         vlc
+        #spotify
         
         ## Utilities
         keepassxc
         otpclient # WinAuth alternative
         wireguard-go
         protonmail-bridge
-        megasync
+        #megasync
         pcloud
         go-sct # f.lux alternative
         flameshot # ShareX alternative
@@ -212,6 +189,30 @@
     LC_TIME = "en_GB.UTF-8";
   };
   console.keyMap = "uk";
+
+  #### Misc
+  nixpkgs.config.allowUnfree = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+  system = {
+    autoUpgrade = {
+      enable = true;
+      allowReboot = false;
+      channel = "https://nixos.org/channels/nixos-23.05";
+      dates = "weekly";
+    };
+  };
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+    settings.auto-optimise-store = true;
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delte-older-than 10d";
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
