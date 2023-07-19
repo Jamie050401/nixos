@@ -131,14 +131,14 @@
         mullvad-vpn
         transmission
         vlc
-        #spotify
+        spotify
         
         ## Utilities
         keepassxc
         otpclient # WinAuth alternative
         wireguard-go
         protonmail-bridge
-        #megasync
+        megasync
         pcloud
         go-sct # f.lux alternative
         flameshot # ShareX alternative
