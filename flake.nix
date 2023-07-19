@@ -27,6 +27,11 @@
                             home-manager = {
                                 useGlobalPkgs = true;
                                 useUserPackages = true;
+                                users.jamie = {
+                                    imports = [
+                                        ./desktop/home.nix
+                                    ];
+                                };
                             };
                         }
                     ];
