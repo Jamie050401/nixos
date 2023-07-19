@@ -1,4 +1,4 @@
-# README
+# My NixOS Configurations
 
 ...  
 

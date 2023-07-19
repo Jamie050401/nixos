@@ -27,6 +27,21 @@
     };
   };
 
+  #### Hardware
+  hardware = {
+    pulseaudio.enable = false;
+    opengl = {
+      driSupport32Bit = true;
+      #extraPackages = [
+      #  rocm-opencl-icd
+      #  pkgs.amdvlk
+      #];
+      #opengl.extraPackages32 = [
+      #  pkgs.driversi686Linux.amdvlk
+      #];
+    };
+  };
+
   #### Windowing System
   services.xserver = {
     enable = true;
@@ -47,7 +62,6 @@
 
   #### Audio
   sound.enable = true;
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -85,6 +99,7 @@
   home-manager = {
     users.jamie = { pkgs, ... }: {
       home.packages = with pkgs; [
+        python311Full
         wget
         git
         firefox
@@ -120,6 +135,7 @@
 
   #### Misc
   nixpkgs.config.allowUnfree = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
   system = {
     autoUpgrade = {
       enable = true;
