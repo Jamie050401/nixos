@@ -1,5 +1,5 @@
 {
-    description = "A very basic flake";
+    description = "Jamie's NixOS flake";
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
@@ -19,6 +19,7 @@
             lib = nixpkgs.lib;
         in {
             nixosConfigurations = {
+                # desktop setup
                 nixos-desktop = lib.nixosSystem {
                     inherit system;
                     modules = [
@@ -29,13 +30,14 @@
                                 useUserPackages = true;
                                 users.jamie = {
                                     imports = [
-                                        ./desktop/home.nix
+                                        ./home.nix
                                     ];
                                 };
                             };
                         }
                     ];
                 };
+                # ...
             };
         };
 }
