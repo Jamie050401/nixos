@@ -1,4 +1,4 @@
-#### Main configuration file for NixOS
+#### Main configuration file for NixOS (for deployment on VMs or LXCs)
 #### Author: Jamie
 
 { config, pkgs, ... }:
@@ -12,9 +12,6 @@
   #### Boot
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    #initrd.kernelModules = [
-    #  "amdgpu"
-    #];
     loader = {
       grub = {
         enable = true;
@@ -31,48 +28,12 @@
     pulseaudio.enable = false;
     opengl = {
       driSupport32Bit = true;
-      #extraPackages = [
-      #  rocm-opencl-icd
-      #  pkgs.amdvlk
-      #];
-      #opengl.extraPackages32 = [
-      #  pkgs.driversi686Linux.amdvlk
-      #];
     };
-  };
-
-  #### Windowing System
-  services.xserver = {
-    enable = true;
-    ## Display Manager
-    displayManager = {
-      sddm.enable = true;
-    };
-    ## Desktop Environment
-    desktopManager = {
-      plasma5.enable = true;
-    };
-    ## Keymap
-    layout = "gb";
-    xkbVariant = "";
-    ## Touchpad
-    libinput.enable = true;
-  };
-
-  #### Audio
-  sound.enable = true;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
   };
 
   #### Networking
   networking = {
-    hostName = "nixos-desktop";
-    #wireless.enable = true;
+    hostName = "nixos-server";
     networkmanager.enable = true;
     firewall = {
       enable = true;
@@ -88,15 +49,13 @@
 
   #### System Services
   services = {
-    #openssh.enable = true;
-    printing.enable = true;
-    flatpak.enable = true;
+    openssh.enable = true;
   };
 
   #### Users
-  users.users.jamie = {
+  users.users.admin = {
     isNormalUser = true;
-    description = "Jamie Allen";
+    description = "";
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -121,7 +80,6 @@
 
   #### Misc
   nixpkgs.config.allowUnfree = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
   system = {
     autoUpgrade = {
       enable = true;
