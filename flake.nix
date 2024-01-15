@@ -36,13 +36,6 @@
                         }
                     ];
                 };
-
-                nixos-server = lib.nixosSystem {
-                    inherit system;
-                    modules = [
-                        ./server/configuration.nix
-                    ];
-                };
             };
         };
 }
