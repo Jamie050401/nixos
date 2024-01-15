@@ -12,9 +12,6 @@
   #### Boot
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    #initrd.kernelModules = [
-    #  "amdgpu"
-    #];
     loader = {
       grub = {
         enable = true;
@@ -31,13 +28,6 @@
     pulseaudio.enable = false;
     opengl = {
       driSupport32Bit = true;
-      #extraPackages = [
-      #  rocm-opencl-icd
-      #  pkgs.amdvlk
-      #];
-      #opengl.extraPackages32 = [
-      #  pkgs.driversi686Linux.amdvlk
-      #];
     };
   };
 
@@ -94,14 +84,14 @@
   };
 
   #### Users
-  users.users.jamie = {
-    isNormalUser = true;
-    description = "Jamie Allen";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-  };
+  #users.users.jamie = {
+  #  isNormalUser = true;
+  #  description = "Jamie Allen";
+  #  extraGroups = [
+  #    "networkmanager"
+  #    "wheel"
+  #  ];
+  #};
 
   #### Locale
   time.timeZone = "Europe/London";
@@ -126,7 +116,7 @@
     autoUpgrade = {
       enable = true;
       allowReboot = false;
-      channel = "https://nixos.org/channels/nixos-23.05";
+      channel = "https://nixos.org/channels/nixos-23.11";
       dates = "weekly";
     };
   };
