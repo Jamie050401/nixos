@@ -4,8 +4,15 @@
 
 let
     configFilesToLink = {
-        #"Path/On/Disk" = ./Relative/Path/In/Repo;
+        #"Path/On/Disk/In/~/.config" = ./Relative/Path/In/Repo;
     };
+
+    homeFilesToLink = {
+        #"Path/On/Disk/In/~" = ./Relatvie/Path/In/Repo;
+    };
+
+    # Helper function
+    toSource = configDirName: dotfilesPath: { source = dotfilesPath; };
 in
 {
     programs = {
@@ -69,10 +76,8 @@ in
             #kdiff3
             #vscodium
         ];
-        file = {
-            # Can be used to capture dotfiles
-            # ...
-        };
+        file = pkgs.lib.attrsets.mapAttrs toSource homeFilesToLink; # Symlinks homeFilesToLink to the ~/ directory
         stateVersion = "23.05";
     };
+    xdg.configFile = pkgs.lib.attrsets.mapAttrs toSource configFilesToLink; # Symlinks configFilesToLink to the ~/.config directory
 }
