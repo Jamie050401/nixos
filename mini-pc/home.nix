@@ -26,6 +26,7 @@ in
         username = "jamie";
         homeDirectory = "/home/jamie";
         packages = with pkgs; [
+            firefox
             libsForQt5.yakuake
 
             # 1. VorpX
