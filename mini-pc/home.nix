@@ -2,9 +2,13 @@
 #### Author: Jamie
 { config, pkgs, ... }:
 
+let
+    configFilesToLink = {
+        #"Path/On/Disk" = ./Relative/Path/In/Repo;
+    };
+in
 {
     programs = {
-        bash.enable = true;
         git = {
             enable = true;
             userName = "Jamie Allen";
@@ -15,7 +19,8 @@
         username = "jamie";
         homeDirectory = "/home/jamie";
         packages = with pkgs; [
-            ## TODO
+            libsForQt5.yakuake
+
             # 1. VorpX
             # 2. VKB Configurator
             # 3. Stable Diffusion (maybe running in a docker container?)
