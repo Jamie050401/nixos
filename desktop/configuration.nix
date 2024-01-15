@@ -88,7 +88,7 @@
 
   #### System Services
   services = {
-    #openssh.enable = true;
+    openssh.enable = true;
     printing.enable = true;
     flatpak.enable = true;
   };
