@@ -9,32 +9,35 @@
         };
     };
 
-    outputs = inputs@{ self, nixpkgs, home-manager }:
+    outputs = inputs@{ self, nixpkgs, home-manager, ... }:
         let
-            customOptions = {
-                userName = "jamie";
-                userFolder = "/home/jamie";
-                hostName = "nixos-mini-pc";
-            };
-
             system = "x86_64-linux";
             pkgs = import nixpkgs {
                 inherit system;
                 config.allowUnfree = true;
             };
             lib = nixpkgs.lib;
+
+            options.customOptions = lib.mkOption {
+                type = lib.types.set;
+                default = {
+                    userName = "jamie";
+                    userFolder = "/home/jamie";
+                    #hostName = "nixos-mini-pc";
+                };
+            };
         in {
             nixosConfigurations = {
                 nixos-mini-pc = lib.nixosSystem {
                     inherit system;
-                    specialArgs = { inherit customOptions; };
+                    specialArgs = { inherit inputs; };
                     modules = [
                         ./modules/configuration.nix
                         home-manager.nixosModules.home-manager {
                             home-manager = {
                                 useGlobalPkgs = true;
                                 useUserPackages = true;
-                                users.jamie = { # ${customOptions.userName}
+                                users.${config.customOptions.userName} = {
                                     imports = [
                                         ./modules/home.nix
                                     ];
