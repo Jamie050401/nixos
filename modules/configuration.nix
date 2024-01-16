@@ -1,4 +1,4 @@
-{ userName, hostName }:
+{ customOptions }:
 { pkgs, ... }:
 
 {
@@ -62,7 +62,7 @@
 
     #### Networking
     networking = {
-        hostName = "${hostName}";
+        hostName = "${customOptions.hostName}";
         #wireless.enable = true;
         networkmanager.enable = true;
         firewall = {
@@ -85,7 +85,7 @@
     };
 
     #### Users
-    users.users.${userName} = {
+    users.users.${customOptions.userName} = {
         isNormalUser = true;
         extraGroups = [
             "networkmanager"

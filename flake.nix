@@ -11,9 +11,11 @@
 
     outputs = inputs@{ self, nixpkgs, home-manager }:
         let
-            userName = "jamie";
-            userFolder = "/home/jamie";
-            hostName = "nixos-mini-pc";
+            customOptions = {
+                userName = "jamie";
+                userFolder = "/home/jamie";
+                hostName = "nixos-mini-pc";
+            };
 
             system = "x86_64-linux";
             pkgs = import nixpkgs {
@@ -25,14 +27,14 @@
             nixosConfigurations = {
                 nixos-mini-pc = lib.nixosSystem {
                     inherit system;
-                    specialArgs = { inherit userName; inherit userFolder; inherit hostName; };
+                    specialArgs = { inherit customOptions; };
                     modules = [
                         ./modules/configuration.nix
                         home-manager.nixosModules.home-manager {
                             home-manager = {
                                 useGlobalPkgs = true;
                                 useUserPackages = true;
-                                users.${userName} = {
+                                users.${customOptions.userName} = {
                                     imports = [
                                         ./modules/home.nix
                                     ];

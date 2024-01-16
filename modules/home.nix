@@ -1,4 +1,4 @@
-{ userName, userFolder }:
+{ customOptions }:
 { pkgs, ... }:
 
 let
@@ -20,8 +20,8 @@ in
     };
 
     home = {
-        username = "${userName}";
-        homeDirectory = "${userFolder}";
+        username = "${customOptions.userName}";
+        homeDirectory = "${customOptions.userFolder}";
         packages = with pkgs; [
             age
             firefox
