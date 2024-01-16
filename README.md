@@ -1,10 +1,8 @@
 # My NixOS Configurations
 
 ## TODO
-1. Implement sops and git-agecrypt for managing secrets
-2. Implement SSH keys for nixos-mini-pc
-3. Redo git within home-manager - install the package directly and include .gitconfig
-4. Add Yakuake configuration file to home manager
+1. Redo git within home-manager - install the package directly and include .gitconfig
+2. Add Yakuake configuration file to home manager
 
 ## NixOS Information
 
@@ -34,5 +32,5 @@ This is the directory where the .nix configuration files exist.
    - --add {url} nixos  
      - Adds the desired url to active channels.  
 
-6. age-keygen -o ~/.age/keys.txt
-   - Generates an age key
+6. age-keygen -o ~/.age/id
+   - Generates an age private key
