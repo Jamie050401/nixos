@@ -1,8 +1,10 @@
 #### Global user configuration (home manager)
 #### Author: Jamie
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
+    homeFolder = "/home/jamie";
+
     configFilesToLink = {
         #"Path/On/Disk/In/~/.config" = ./Relative/Path/In/Repo;
     };
@@ -15,10 +17,6 @@ let
     toSource = configDirName: dotfilesPath: { source = dotfilesPath; };
 in
 {
-    sops = {
-        age.keyFile = "/home/jamie/.age/keys.txt";
-    };
-
     programs = {
         git = {
             enable = true;
@@ -29,12 +27,11 @@ in
 
     home = {
         username = "jamie";
-        homeDirectory = "/home/jamie";
+        homeDirectory = "${homeFolder}";
         packages = with pkgs; [
             age
             firefox
             libsForQt5.yakuake
-            sops
 
             # 1. VorpX
             # 2. VKB Configurator
