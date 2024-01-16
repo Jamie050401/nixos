@@ -3,8 +3,9 @@
 ## TODO
 1. Implement Agenix for managing secrets
 2. Implement SSH keys for nixos-mini-pc
-3. Redo git within home-manager - install the package directly and include .gitconfig
-4. Add Yakuake configuration file to home manager
+3. Implement GPG keys for nixos-mini-pc
+4. Redo git within home-manager - install the package directly and include .gitconfig
+5. Add Yakuake configuration file to home manager
 
 ## NixOS Information
 
