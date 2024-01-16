@@ -1,5 +1,3 @@
-#### Global user configuration (home manager)
-#### Author: Jamie
 { pkgs, ... }:
 
 let

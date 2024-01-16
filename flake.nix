@@ -26,7 +26,7 @@
                 nixos-mini-pc = lib.nixosSystem {
                     inherit system;
                     modules = [
-                        ./nixos-mini-pc/configuration.nix
+                        ./devices/nixos-mini-pc/configuration.nix
                         home-manager.nixosModules.home-manager {
                             home-manager = {
                                 useGlobalPkgs = true;
@@ -34,7 +34,7 @@
                                 users.jamie = {
                                     imports = [
                                         homeage.homeManagerModules.homeage
-                                        ./global/home.nix
+                                        ./devices/nixos-mini-pc/home.nix
                                     ];
                                 };
                             };

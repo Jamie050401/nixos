@@ -1,7 +1,4 @@
-#### Global configuration for NixOS
-#### Author: Jamie
-
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   #### Boot
