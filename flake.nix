@@ -43,12 +43,12 @@
                         }
                         ({ lib, ... }: {
                             options.customOptions = lib.mkOption {
-                                type = lib.types.set;
+                                type = lib.types.attrs;
                                 default = customOptions;
                             };
                         })
                     ];
-                }
+                };
             };
         };
 }
