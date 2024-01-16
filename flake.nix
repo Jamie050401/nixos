@@ -13,6 +13,7 @@
         let
             userName = "jamie";
             userFolder = "/home/jamie";
+            hostName = "nixos-mini-pc"
 
             system = "x86_64-linux";
             pkgs = import nixpkgs {
@@ -24,15 +25,16 @@
             nixosConfigurations = {
                 nixos-mini-pc = lib.nixosSystem {
                     inherit system;
+                    specialArgs = { inherit userName; inherit userFolder; inherit hostName; };
                     modules = [
-                        ./devices/nixos-mini-pc/configuration.nix
+                        ./modules/configuration.nix
                         home-manager.nixosModules.home-manager {
                             home-manager = {
                                 useGlobalPkgs = true;
                                 useUserPackages = true;
                                 users.${userName} = {
                                     imports = [
-                                        ./devices/nixos-mini-pc/home.nix
+                                        ./modules/home.nix
                                     ];
                                 };
                             };

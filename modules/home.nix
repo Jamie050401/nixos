@@ -1,4 +1,5 @@
-{ pkgs, userName, userFolder, ... }:
+{ userName, userFolder }:
+{ pkgs, ... }:
 
 let
     configFilesToLink = {
