@@ -13,7 +13,7 @@
         let
             userName = "jamie";
             userFolder = "/home/jamie";
-            hostName = "nixos-mini-pc"
+            hostName = "nixos-mini-pc";
 
             system = "x86_64-linux";
             pkgs = import nixpkgs {
