@@ -15,6 +15,9 @@
 
     outputs = inputs@{ self, nixpkgs, home-manager, homeage }:
         let
+            userName = "jamie";
+            userFolder = "/home/jamie";
+
             system = "x86_64-linux";
             pkgs = import nixpkgs {
                 inherit system;

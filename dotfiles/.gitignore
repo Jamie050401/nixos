@@ -1,0 +1,13 @@
+# Visual Studio
+.vs/
+**/.vs/
+
+# Jetbrains Rider
+.idea/
+**/.idea/
+
+# .NET
+*.DotSettings
+*.DotSettings.*
+**/bin/
+**/obj/

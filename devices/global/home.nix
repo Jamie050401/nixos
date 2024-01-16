@@ -1,14 +1,16 @@
 { pkgs, ... }:
 
 let
-    homeFolder = "/home/jamie";
+    userName = "jamie";
+    userFolder = "/home/jamie";
 
     configFilesToLink = {
         #"Path/On/Disk/In/~/.config" = ./Relative/Path/In/Repo;
     };
 
     homeFilesToLink = {
-        #"Path/On/Disk/In/~" = ./Relatvie/Path/In/Repo;
+        ".gitconfig" = ../../dotfiles/.gitconfig;
+        ".gitignore" = ../../dotfiles/.gitignore;
     };
 
     # Helper function
@@ -16,16 +18,12 @@ let
 in
 {
     programs = {
-        git = {
-            enable = true;
-            userName = "Jamie Allen";
-            userEmail = "jamieallen050401@gmail.com";
-        };
+        git.enable = true;
     };
 
     home = {
-        username = "jamie";
-        homeDirectory = "${homeFolder}";
+        username = "${userName}";
+        homeDirectory = "${userFolder}";
         packages = with pkgs; [
             age
             firefox
