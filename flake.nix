@@ -18,17 +18,18 @@
             };
             lib = nixpkgs.lib;
 
+            customOptions = {
+                userName = "jamie";
+                userFolder = "/home/jamie";
+                hostName = "nixos-mini-pc";
+            };
             options.customOptions = lib.mkOption {
                 type = lib.types.set;
-                default = {
-                    userName = "jamie";
-                    userFolder = "/home/jamie";
-                    #hostName = "nixos-mini-pc";
-                };
+                default = customOptions;
             };
         in {
             nixosConfigurations = {
-                nixos-mini-pc = lib.nixosSystem {
+                ${customOptions.hostName} = lib.nixosSystem {
                     inherit system;
                     specialArgs = { inherit inputs; };
                     modules = [
@@ -37,7 +38,7 @@
                             home-manager = {
                                 useGlobalPkgs = true;
                                 useUserPackages = true;
-                                users.${config.customOptions.userName} = {
+                                users.${customOptions.userName} = {
                                     imports = [
                                         ./modules/home.nix
                                     ];
