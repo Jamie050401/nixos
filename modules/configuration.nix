@@ -1,5 +1,12 @@
-{ pkgs, customOptions, ... }:
+{ pkgs, ... }:
 
+let
+    customOptions = {
+        userName = "jamie";
+        userFolder = "/home/jamie";
+        hostName = "nixos-mini-pc";
+    };
+in
 {
     imports = [
         ./hardware-configuration.nix # Include the results of the hardware scan.

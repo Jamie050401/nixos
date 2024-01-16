@@ -1,6 +1,12 @@
-{ pkgs, customOptions, ... }:
+{ pkgs, ... }:
 
 let
+    customOptions = {
+        userName = "jamie";
+        userFolder = "/home/jamie";
+        hostName = "nixos-mini-pc";
+    };
+
     configFilesToLink = {
         #"Path/On/Disk/In/~/.config" = ./Relative/Path/In/Repo;
     };
