@@ -13,13 +13,17 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
+      efi = {
+        canTouchEfiVariables = true;
+      };
       grub = {
         enable = true;
         device = "nodev";
+        efiSupport = true;
         useOSProber = true;
         configurationLimit = 5;
       };
-    timeout = 5;
+    timeout = 30;
     };
   };
 
@@ -61,7 +65,7 @@
 
   #### Networking
   networking = {
-    hostName = "nixos-desktop";
+    hostName = "nixos-mini-pc";
     #wireless.enable = true;
     networkmanager.enable = true;
     firewall = {
@@ -84,14 +88,14 @@
   };
 
   #### Users
-  users.users.jamie = {
-    isNormalUser = true;
-    description = "Jamie Allen";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-  };
+  #users.users.jamie = {
+  #  isNormalUser = true;
+  #  description = "Jamie Allen";
+  #  extraGroups = [
+  #    "networkmanager"
+  #    "wheel"
+  #  ];
+  #};
 
   #### Locale
   time.timeZone = "Europe/London";
