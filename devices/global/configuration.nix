@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, userName, ... }:
 
 {
   #### Boot

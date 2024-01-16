@@ -23,7 +23,7 @@
         in {
             nixosConfigurations = {
                 nixos-mini-pc = lib.nixosSystem {
-                    inherit system inputs userName userFolder;
+                    inherit system;
                     modules = [
                         ./devices/nixos-mini-pc/configuration.nix
                         home-manager.nixosModules.home-manager {
