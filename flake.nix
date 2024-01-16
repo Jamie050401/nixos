@@ -22,7 +22,7 @@
                 nixos-mini-pc = lib.nixosSystem {
                     inherit system;
                     modules = [
-                        ./mini-pc/configuration.nix
+                        ./nixos-mini-pc/configuration.nix
                         home-manager.nixosModules.home-manager {
                             home-manager = {
                                 useGlobalPkgs = true;
