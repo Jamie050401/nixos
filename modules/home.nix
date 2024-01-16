@@ -6,8 +6,8 @@ let
     };
 
     homeFilesToLink = {
-        ".gitconfig" = ../../dotfiles/.gitconfig;
-        ".gitignore" = ../../dotfiles/.gitignore;
+        ".gitconfig" = ../dotfiles/.gitconfig;
+        ".gitignore" = ../dotfiles/.gitignore;
     };
 
     # Helper function
