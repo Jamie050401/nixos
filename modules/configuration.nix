@@ -84,7 +84,7 @@
     };
 
     #### Users
-    users.users.jamie = { # ${customOptions.userName}
+    users.users.${config.customOptions.userName} = {
         isNormalUser = true;
         extraGroups = [
             "networkmanager"

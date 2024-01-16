@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let
     configFilesToLink = {
@@ -19,8 +19,8 @@ in
     };
 
     home = {
-        username = "jamie"; # ${customOptions.userName}
-        homeDirectory = "/home/jamie"; # ${customOptions.userFolder}
+        username = config.customOptions.userName;
+        homeDirectory = config.customOptions.userFolder;
         packages = with pkgs; [
             age
             firefox
