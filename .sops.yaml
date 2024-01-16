@@ -1,0 +1,7 @@
+keys:
+    - &nixos-mini-pc age19lydc4pw75cg0640c77zgfnfz2zlpsexe6k55jadtp6cvvcpx3lqy92tn8
+creation_rules:
+    - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+      key_groups:
+          - age:
+                - *nixos-mini-pc
