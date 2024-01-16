@@ -1,5 +1,4 @@
-{ customOptions }:
-{ pkgs, ... }:
+{ pkgs, customOptions, ... }:
 
 {
     imports = [
