@@ -1,4 +1,4 @@
-#### User configuration (home manager)
+#### Global user configuration (home manager)
 #### Author: Jamie
 { config, pkgs, ... }:
 

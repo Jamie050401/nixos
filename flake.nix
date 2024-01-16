@@ -1,5 +1,5 @@
 {
-    description = "Top Level NixOS Flake";
+    description = "NixOS Flake";
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
@@ -29,7 +29,7 @@
                                 useUserPackages = true;
                                 users.jamie = {
                                     imports = [
-                                        ./mini-pc/home.nix
+                                        ./global/home.nix
                                     ];
                                 };
                             };
