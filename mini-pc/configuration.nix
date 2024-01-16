@@ -88,14 +88,13 @@
   };
 
   #### Users
-  #users.users.jamie = {
-  #  isNormalUser = true;
-  #  description = "Jamie Allen";
-  #  extraGroups = [
-  #    "networkmanager"
-  #    "wheel"
-  #  ];
-  #};
+  users.users.jamie = {
+    isNormalUser = true;
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+  };
 
   #### Locale
   time.timeZone = "Europe/London";
