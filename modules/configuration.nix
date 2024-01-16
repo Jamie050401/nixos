@@ -1,12 +1,5 @@
 { pkgs, ... }:
 
-let
-    customOptions = {
-        userName = "jamie";
-        userFolder = "/home/jamie";
-        hostName = "nixos-mini-pc";
-    };
-in
 {
     imports = [
         ./hardware-configuration.nix # Include the results of the hardware scan.
@@ -68,7 +61,7 @@ in
 
     #### Networking
     networking = {
-        hostName = "${customOptions.hostName}";
+        hostName = "nixos-mini-pc"; # ${customOptions.hostName}
         #wireless.enable = true;
         networkmanager.enable = true;
         firewall = {
@@ -91,7 +84,7 @@ in
     };
 
     #### Users
-    users.users.${customOptions.userName} = {
+    users.users.jamie = { # ${customOptions.userName}
         isNormalUser = true;
         extraGroups = [
             "networkmanager"

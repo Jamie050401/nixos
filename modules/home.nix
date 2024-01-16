@@ -1,12 +1,6 @@
 { pkgs, ... }:
 
 let
-    customOptions = {
-        userName = "jamie";
-        userFolder = "/home/jamie";
-        hostName = "nixos-mini-pc";
-    };
-
     configFilesToLink = {
         #"Path/On/Disk/In/~/.config" = ./Relative/Path/In/Repo;
     };
@@ -25,8 +19,8 @@ in
     };
 
     home = {
-        username = "${customOptions.userName}";
-        homeDirectory = "${customOptions.userFolder}";
+        username = "jamie"; # ${customOptions.userName}
+        homeDirectory = "/home/jamie"; # ${customOptions.userFolder}
         packages = with pkgs; [
             age
             firefox

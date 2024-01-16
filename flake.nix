@@ -34,7 +34,7 @@
                             home-manager = {
                                 useGlobalPkgs = true;
                                 useUserPackages = true;
-                                users.${customOptions.userName} = {
+                                users.jamie = { # ${customOptions.userName}
                                     imports = [
                                         ./modules/home.nix
                                     ];
