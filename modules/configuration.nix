@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
     imports = [
@@ -61,7 +61,7 @@
 
     #### Networking
     networking = {
-        hostName = "nixos-mini-pc"; # ${customOptions.hostName}
+        hostName = ${config.customOptions.hostName}; #"nixos-mini-pc";
         #wireless.enable = true;
         networkmanager.enable = true;
         firewall = {
