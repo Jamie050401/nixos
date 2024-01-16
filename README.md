@@ -1,6 +1,8 @@
 # My NixOS Configurations
 
-...  
+## TODO
+1. Redo git within home-manager - install the package directly and include .gitconfig
+2. Add Yakuake configuration file to home manager
 
 ## NixOS Information
 
