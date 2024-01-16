@@ -61,7 +61,7 @@
 
     #### Networking
     networking = {
-        hostName = ${config.customOptions.hostName}; #"nixos-mini-pc";
+        hostName = config.customOptions.hostName;
         #wireless.enable = true;
         networkmanager.enable = true;
         firewall = {

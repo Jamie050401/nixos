@@ -11,22 +11,18 @@
 
     outputs = inputs@{ self, nixpkgs, home-manager, ... }:
         let
+            customOptions = {
+                userName = "jamie";
+                userFolder = "/home/jamie";
+                hostName = "nixos-mini-pc";
+            };
+
             system = "x86_64-linux";
             pkgs = import nixpkgs {
                 inherit system;
                 config.allowUnfree = true;
             };
             lib = nixpkgs.lib;
-
-            customOptions = {
-                userName = "jamie";
-                userFolder = "/home/jamie";
-                hostName = "nixos-mini-pc";
-            };
-            options.customOptions = lib.mkOption {
-                type = lib.types.set;
-                default = customOptions;
-            };
         in {
             nixosConfigurations = {
                 ${customOptions.hostName} = lib.nixosSystem {
@@ -45,8 +41,14 @@
                                 };
                             };
                         }
+                        ({ lib, ... }: {
+                            options.customOptions = lib.mkOption {
+                                type = lib.types.set;
+                                default = customOptions;
+                            };
+                        })
                     ];
-                };
+                }
             };
         };
 }
