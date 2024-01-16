@@ -19,8 +19,8 @@ in
     };
 
     home = {
-        username = config.customOptions.userName;
-        homeDirectory = config.customOptions.userFolder;
+        username = "jamie"; #config.customOptions.userName;
+        homeDirectory = "/home/jamie"; #config.customOptions.userFolder;
         packages = with pkgs; [
             age
             firefox
