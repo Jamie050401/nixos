@@ -33,3 +33,6 @@ This is the directory where the .nix configuration files exist.
      - Lists currently active channels.  
    - --add {url} nixos  
      - Adds the desired url to active channels.  
+
+6. age-keygen -o ~/.age/keys.txt
+   - Generates an age key
