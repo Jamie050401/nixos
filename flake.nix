@@ -7,9 +7,13 @@
             url = "github:nix-community/home-manager/release-23.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        agenix = {
+            url = "github:ryantm/agenix";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }:
+    outputs = { self, nixpkgs, home-manager, agenix, ... }:
         let
             system = "x86_64-linux";
             pkgs = import nixpkgs {
@@ -34,6 +38,7 @@
                                 };
                             };
                         }
+                        agenix.nixosModules.default
                     ];
                 };
             };
