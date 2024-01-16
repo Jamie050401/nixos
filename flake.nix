@@ -7,9 +7,10 @@
             url = "github:nix-community/home-manager/release-23.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        sops-nix.url = "github:Mic92/sops-nix";
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }:
+    outputs = { self, nixpkgs, home-manager, sops-nix, ... }:
         let
             system = "x86_64-linux";
             pkgs = import nixpkgs {
@@ -29,6 +30,7 @@
                                 useUserPackages = true;
                                 users.jamie = {
                                     imports = [
+                                        sops-nix.homeManagerModules.sops
                                         ./global/home.nix
                                     ];
                                 };

@@ -15,6 +15,10 @@ let
     toSource = configDirName: dotfilesPath: { source = dotfilesPath; };
 in
 {
+    sops = {
+        age.keyFile = "/home/jamie/.age/keys.txt";
+    };
+
     programs = {
         git = {
             enable = true;
@@ -22,12 +26,15 @@ in
             userEmail = "jamieallen050401@gmail.com";
         };
     };
+
     home = {
         username = "jamie";
         homeDirectory = "/home/jamie";
         packages = with pkgs; [
+            age
             firefox
             libsForQt5.yakuake
+            sops
 
             # 1. VorpX
             # 2. VKB Configurator
@@ -77,8 +84,10 @@ in
             #kdiff3
             #vscodium
         ];
+
         file = pkgs.lib.attrsets.mapAttrs toSource homeFilesToLink; # Symlinks homeFilesToLink to the ~/ directory
         stateVersion = "23.05";
     };
+
     xdg.configFile = pkgs.lib.attrsets.mapAttrs toSource configFilesToLink; # Symlinks configFilesToLink to the ~/.config directory
 }
