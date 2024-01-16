@@ -7,9 +7,13 @@
             url = "github:nix-community/home-manager/release-23.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        homeage = {
+            url = "github:jordanisaacs/homeage";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
-    outputs = inputs@{ self, nixpkgs, home-manager }:
+    outputs = inputs@{ self, nixpkgs, home-manager, homeage }:
         let
             system = "x86_64-linux";
             pkgs = import nixpkgs {
@@ -29,6 +33,7 @@
                                 useUserPackages = true;
                                 users.jamie = {
                                     imports = [
+                                        homeage.homeManagerModules.homeage
                                         ./global/home.nix
                                     ];
                                 };
