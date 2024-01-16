@@ -79,7 +79,7 @@
   };
 
   #### Users
-  users.users.jamie = {
+  users.users.${userName} = {
     isNormalUser = true;
     extraGroups = [
       "networkmanager"

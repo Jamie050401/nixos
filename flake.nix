@@ -7,13 +7,9 @@
             url = "github:nix-community/home-manager/release-23.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        homeage = {
-            url = "github:jordanisaacs/homeage";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
     };
 
-    outputs = inputs@{ self, nixpkgs, home-manager, homeage }:
+    outputs = inputs@{ self, nixpkgs, home-manager }:
         let
             userName = "jamie";
             userFolder = "/home/jamie";
@@ -27,16 +23,15 @@
         in {
             nixosConfigurations = {
                 nixos-mini-pc = lib.nixosSystem {
-                    inherit system;
+                    inherit system inputs userName userFolder;
                     modules = [
                         ./devices/nixos-mini-pc/configuration.nix
                         home-manager.nixosModules.home-manager {
                             home-manager = {
                                 useGlobalPkgs = true;
                                 useUserPackages = true;
-                                users.jamie = {
+                                users.${userName} = {
                                     imports = [
-                                        homeage.homeManagerModules.homeage
                                         ./devices/nixos-mini-pc/home.nix
                                     ];
                                 };

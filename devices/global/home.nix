@@ -1,9 +1,6 @@
 { pkgs, ... }:
 
 let
-    userName = "jamie";
-    userFolder = "/home/jamie";
-
     configFilesToLink = {
         #"Path/On/Disk/In/~/.config" = ./Relative/Path/In/Repo;
     };
