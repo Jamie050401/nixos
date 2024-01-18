@@ -69,8 +69,6 @@
             #vscodium
         ];
 
-        #file = pkgs.lib.attrsets.mapAttrs toSource homeFilesToLink; # Symlinks homeFilesToLink to the ~/ directory
-
         file = {
             autostartScript = {
                 enable = true;
