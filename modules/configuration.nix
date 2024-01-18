@@ -1,10 +1,6 @@
 { pkgs, config, ... }:
 
 {
-    imports = [
-        ./nixos-mini-pc/hardware-configuration.nix # Include the results of the hardware scan.
-    ];
-
     #### Boot
     boot = {
         kernelPackages = pkgs.linuxPackages_latest;

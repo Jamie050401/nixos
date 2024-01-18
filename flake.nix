@@ -38,6 +38,7 @@
                         })
 
                         # Configurations
+                        ./modules/${customOptions.hostName}/hardware-configuration.nix
                         ./modules/configuration.nix
                         home-manager.nixosModules.home-manager {
                             home-manager = {
