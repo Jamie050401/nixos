@@ -2,7 +2,7 @@
 
 let
     configFilesToLink = {
-        #"Path/On/Disk/In/~/.config" = ./Relative/Path/In/Repo;
+        "yakuakerc" = ../dotfiles/yakuakerc;
     };
 
     homeFilesToLink = {

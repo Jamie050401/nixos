@@ -1,0 +1,6 @@
+[Dialogs]
+FirstRun=false
+
+[Appearance]
+Blur = true
+Translucency = true
