@@ -2,7 +2,7 @@
 
 {
     imports = [
-        ./${config.customOptions.hostName}/hardware-configuration.nix # Include the results of the hardware scan.
+        ./nixos-mini-pc/hardware-configuration.nix # Include the results of the hardware scan.
     ];
 
     #### Boot
