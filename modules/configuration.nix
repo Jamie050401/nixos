@@ -131,12 +131,12 @@
     nixpkgs.config.allowUnfree = true;
     xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
     system = {
-        autoUpgrade = {
-            enable = true;
-            allowReboot = false;
-            channel = "https://nixos.org/channels/nixos-23.11";
-            dates = "weekly";
-        };
+#        autoUpgrade = {
+#            enable = true;
+#            allowReboot = false;
+#            channel = "https://nixos.org/channels/nixos-23.11";
+#            dates = "weekly";
+#        };
     };
     nix = {
         package = pkgs.nixFlakes;
