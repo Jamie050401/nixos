@@ -3,15 +3,21 @@
 {
     programs = {
         git.enable = true;
+        tmux = {
+            clock24 = true;
+            enable = true;
+            mouse = true;
+            newSession = true;
+        };
         zsh = {
             enable = true;
-            shellAliases = {
-                ll = "ls -l";
-            };
             oh-my-zsh = {
                 enable = true;
                 plugins = [];
                 theme = "amuse";
+            };
+            shellAliases = {
+                ll = "ls -l";
             };
         };
     };
@@ -23,7 +29,6 @@
             age
             firefox
             libsForQt5.yakuake
-            tmux
 
             # 1. VorpX
             # 2. VKB Configurator

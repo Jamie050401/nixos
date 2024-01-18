@@ -12,6 +12,7 @@ function instruct {
 }
 
 instruct "/yakuake/tabs setTabTitle 0 'NixOS'"
+instruct "/yakuake/sessions runCommandInTerminal 0 'tmux'"
 instruct "/yakuake/sessions runCommandInTerminal 0 'cd ~/Development/Git.Repositories/nixos'"
 instruct "/yakuake/sessions runCommandInTerminal 0 'clear'"
 
