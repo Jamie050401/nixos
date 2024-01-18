@@ -2,7 +2,7 @@
 
 {
     imports = [
-        ./hardware-configuration.nix # Include the results of the hardware scan.
+        ./${config.customOptions.hostName}/hardware-configuration.nix # Include the results of the hardware scan.
     ];
 
     #### Boot

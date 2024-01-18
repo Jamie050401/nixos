@@ -29,6 +29,15 @@
                     inherit system;
                     specialArgs = { inherit inputs; };
                     modules = [
+                        # Options (available in config)
+                        ({ lib, ... }: {
+                            options.customOptions = lib.mkOption {
+                                type = lib.types.attrs;
+                                default = customOptions;
+                            };
+                        })
+
+                        # Configurations
                         ./modules/configuration.nix
                         home-manager.nixosModules.home-manager {
                             home-manager = {
@@ -41,12 +50,6 @@
                                 };
                             };
                         }
-                        ({ lib, ... }: {
-                            options.customOptions = lib.mkOption {
-                                type = lib.types.attrs;
-                                default = customOptions;
-                            };
-                        })
                     ];
                 };
             };
