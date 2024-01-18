@@ -79,19 +79,6 @@
         systemPackages = with pkgs; [
             # ...
         ];
-        plasma5.excludePackages = with pkgs.libsForQt5; [ # this section doesn't seem to work
-            elisa
-            gwenview
-            kemoticons # verify this package (want to remove emoji selector)
-            khelpcenter
-            kinfocenter
-            kmenuedit
-            konsole
-            kwallet
-            kwalletmanager
-            okular
-            spectacle
-        ];
     };
 
     #### System Services
@@ -117,7 +104,7 @@
     systemd.user.services.yakuakeService = {
         description = "Initialisation and setup service for Yakuake";
         script = ''
-            ${config.customOptions.userFolder}/scripts/setup_yakuake;
+            zsh ${config.customOptions.userFolder}/scripts/setup_yakuake
         '';
         wantedBy = [ "multi-user.target" ];
     };

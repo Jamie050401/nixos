@@ -9,3 +9,4 @@ function instruct {
 instruct "/yakuake/sessions org.kde.yakuake.addSession"
 instruct "/yakuake/tabs org.kde.yakuake.setTabTitle 0 NixOS"
 instruct "/yakuake/sessions runCommandInTerminal 0 'cd ~/Development/Git.Repositories/nixos'"
+instruct "/yakuake/sessions runCommandInTerminal 0 'clear'"
