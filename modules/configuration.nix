@@ -101,15 +101,15 @@
     };
 
     #### User Services
-    systemd.user.services.autostartScripts = {
-        description = "Service that executes auto start scripts";
-        path = [pkgs.zsh];
-        serviceConfig = {
-            WorkingDirectory = "${config.customOptions.userFolder}/scripts";
-            ExecStart = "${config.customOptions.userFolder}/scripts/autostart";
-        };
-        wantedBy = [ "graphical-session.target" ];
-    };
+#    systemd.user.services.autostartScripts = {
+#        description = "Service that executes auto start scripts";
+#        path = [pkgs.zsh];
+#        serviceConfig = {
+#            WorkingDirectory = "${config.customOptions.userFolder}/scripts";
+#            ExecStart = "${config.customOptions.userFolder}/scripts/autostart";
+#        };
+#        wantedBy = [ "graphical-session.target" ];
+#    };
 
     #### Locale
     time.timeZone = "Europe/London";
