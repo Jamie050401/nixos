@@ -76,7 +76,12 @@
                 enable = true;
                 executable = true;
                 source = ../scripts/autostart;
-                target = "scripts/autostart";
+                target = ".scripts/autostart";
+            };
+            autostartKDE = {
+                enable = true;
+                source = ../scripts/autostart/autostart.desktop;
+                target = ".config/autostart/autostart.desktop";
             };
             gitConfig = {
                 enable = true;

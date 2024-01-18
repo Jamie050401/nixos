@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/home/jamie/.scripts/autostart
+Icon=dialog-scripts
+Name=autostart
+Type=Application
+X-KDE-AutostartScript=true
