@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-sleep 2 # give yakuake a couple seconds before executing commands
-
 function instruct {
     cmd="qdbus org.kde.yakuake $1"
     eval $cmd &> /dev/null

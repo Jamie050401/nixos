@@ -113,6 +113,15 @@
         };
     };
 
+    #### User Services
+    systemd.user.services.yakuakeService = {
+        description = "Initialisation and setup service for Yakuake";
+        script = ''
+            ${config.customOptions.userFolder}/scripts/setup_yakuake;
+        '';
+        wantedBy = [ "multi-user.target" ];
+    };
+
     #### Locale
     time.timeZone = "Europe/London";
     i18n.defaultLocale = "en_GB.UTF-8";

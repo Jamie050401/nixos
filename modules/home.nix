@@ -91,7 +91,7 @@
                 enable = true;
                 executable = true;
                 source = ../scripts/setup_yakuake;
-                target = ".config/autostart/setup_yakuake";
+                target = "scripts/setup_yakuake";
             };
         };
 
