@@ -106,7 +106,7 @@
         path = [pkgs.zsh];
         serviceConfig = {
             WorkingDirectory = "${config.customOptions.userFolder}/scripts";
-            ExecStart = "${config.customOptions.userFolder}/scripts/setup_yakuake";
+            ExecStart = "${config.customOptions.userFolder}/scripts/autostart";
         };
         wantedBy = [ "graphical-session.target" ];
     };

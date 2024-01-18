@@ -72,26 +72,26 @@
         #file = pkgs.lib.attrsets.mapAttrs toSource homeFilesToLink; # Symlinks homeFilesToLink to the ~/ directory
 
         file = {
-            gitIgnore = {
+            autostartScript = {
                 enable = true;
-                source = ../dotfiles/.gitignore;
-                target = ".gitignore";
+                executable = true;
+                source = ../scripts/autostart;
+                target = "scripts/autostart";
             };
             gitConfig = {
                 enable = true;
                 source = ../dotfiles/.gitconfig;
                 target = ".gitconfig";
             };
+            gitIgnore = {
+                enable = true;
+                source = ../dotfiles/.gitignore;
+                target = ".gitignore";
+            };
             yakuakeConfig = {
                 enable = true;
                 source = ../dotfiles/yakuakerc;
                 target = ".config/yakuakerc";
-            };
-            yakuakeSetup = {
-                enable = true;
-                executable = true;
-                source = ../scripts/setup_yakuake;
-                target = "scripts/setup_yakuake";
             };
         };
 

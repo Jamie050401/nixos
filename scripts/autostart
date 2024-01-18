@@ -1,12 +1,16 @@
 #!/usr/bin/env zsh
 
+/usr/bin/env yakuake
+sleep 2
+
 function instruct {
     cmd="qdbus org.kde.yakuake $1"
     eval $cmd &> /dev/null
     sleep 0.5
 }
 
-instruct "/yakuake/sessions org.kde.yakuake.addSession"
+#instruct "/yakuake/sessions org.kde.yakuake.addSession"
 instruct "/yakuake/tabs org.kde.yakuake.setTabTitle 0 NixOS"
 instruct "/yakuake/sessions runCommandInTerminal 0 'cd ~/Development/Git.Repositories/nixos'"
 instruct "/yakuake/sessions runCommandInTerminal 0 'clear'"
+instruct "/yakuake/sessions raiseSession 0"
