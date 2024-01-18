@@ -46,7 +46,7 @@
                                 useUserPackages = true;
                                 users.${customOptions.userName} = {
                                     imports = [
-                                        ./modules/home.nix
+                                        ./modules/users/${customOptions.userName}/home.nix
                                     ];
                                 };
                             };

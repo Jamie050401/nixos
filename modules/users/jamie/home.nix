@@ -83,27 +83,27 @@
             autostartScript = {
                 enable = true;
                 executable = true;
-                source = ../scripts/autostart;
+                source = ../../../scripts/autostart;
                 target = ".scripts/autostart";
             };
             autostartKDE = {
                 enable = true;
-                source = ../dotfiles/autostart/autostart.desktop;
+                source = ../../../dotfiles/autostart/autostart.desktop;
                 target = ".config/autostart/autostart.desktop";
             };
             gitConfig = {
                 enable = true;
-                source = ../dotfiles/.gitconfig;
+                source = ../../../dotfiles/.gitconfig;
                 target = ".gitconfig";
             };
             gitIgnore = {
                 enable = true;
-                source = ../dotfiles/.gitignore;
+                source = ../../../dotfiles/.gitignore;
                 target = ".gitignore";
             };
             yakuakeConfig = {
                 enable = true;
-                source = ../dotfiles/yakuakerc;
+                source = ../../../dotfiles/yakuakerc;
                 target = ".config/yakuakerc";
             };
         };
