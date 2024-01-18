@@ -106,7 +106,7 @@
         script = ''
             zsh ${config.customOptions.userFolder}/scripts/setup_yakuake
         '';
-        wantedBy = [ "multi-user.target" ];
+        wantedBy = [ "graphical-session.target" ];
     };
 
     #### Locale
