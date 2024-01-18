@@ -12,8 +12,8 @@
     };
 
     home = {
-        username = osConfig.customOptions.userName; #"jamie";
-        homeDirectory = osConfig.customOptions.userFolder; #"/home/jamie";
+        username = osConfig.customOptions.userName;
+        homeDirectory = osConfig.customOptions.userFolder;
         packages = with pkgs; [
             age
             firefox
