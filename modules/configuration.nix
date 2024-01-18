@@ -79,7 +79,7 @@
         systemPackages = with pkgs; [
             # ...
         ];
-        plasma5.excludePackages = with pkgs.libsForQt5; [
+        plasma5.excludePackages = with pkgs.libsForQt5; [ # this section doesn't seem to work
             elisa
             gwenview
             kemoticons # verify this package (want to remove emoji selector)
