@@ -1,16 +1,19 @@
 #!/usr/bin/env zsh
 
-/usr/bin/env yakuake
+# Start Yakuake
+yakuake &
 sleep 2
 
+# Configure initial state of Yakuake
 function instruct {
     cmd="qdbus org.kde.yakuake $1"
     eval $cmd &> /dev/null
     sleep 0.5
 }
 
-#instruct "/yakuake/sessions org.kde.yakuake.addSession"
-instruct "/yakuake/tabs org.kde.yakuake.setTabTitle 0 NixOS"
+instruct "/yakuake/tabs setTabTitle 0 'NixOS'"
 instruct "/yakuake/sessions runCommandInTerminal 0 'cd ~/Development/Git.Repositories/nixos'"
 instruct "/yakuake/sessions runCommandInTerminal 0 'clear'"
+
+# Sets session zero as the active session
 instruct "/yakuake/sessions raiseSession 0"
