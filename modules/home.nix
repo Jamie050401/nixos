@@ -3,6 +3,7 @@
 let
     configFilesToLink = {
         "yakuakerc" = ../dotfiles/yakuakerc;
+        "/autostart/setup_yakuake" = ../scripts/setup_yakuake;
     };
 
     homeFilesToLink = {
@@ -16,6 +17,12 @@ in
 {
     programs = {
         git.enable = true;
+        zsh = {
+            enable = true;
+            shellAliases = {
+                ll = "ls -l";
+            };
+        };
     };
 
     home = {

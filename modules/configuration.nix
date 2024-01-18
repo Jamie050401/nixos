@@ -72,12 +72,25 @@
     };
 
     #### System Packages
+    programs = {
+        zsh.enable = true;
+    };
     environment = {
         systemPackages = with pkgs; [
             # ...
         ];
         plasma5.excludePackages = with pkgs.libsForQt5; [
-            # ...
+            elisa
+            gwenview
+            kemoticons # verify this package (want to remove emoji selector)
+            khelpcenter
+            kinfocenter
+            kmenuedit
+            konsole
+            kwallet
+            kwalletmanager
+            okular
+            spectacle
         ];
     };
 
@@ -89,12 +102,15 @@
     };
 
     #### Users
-    users.users.${config.customOptions.userName} = {
-        isNormalUser = true;
-        extraGroups = [
-            "networkmanager"
-            "wheel"
-        ];
+    users = {
+        defaultUserShell = pkgs.zsh;
+        users.${config.customOptions.userName} = {
+            isNormalUser = true;
+            extraGroups = [
+                "networkmanager"
+                "wheel"
+            ];
+        };
     };
 
     #### Locale
