@@ -101,11 +101,13 @@
     };
 
     #### User Services
-    systemd.user.services.yakuakeService = {
-        description = "Initialisation and setup service for Yakuake";
-        script = ''
-            zsh ${config.customOptions.userFolder}/scripts/setup_yakuake
-        '';
+    systemd.user.services.autostartScripts = {
+        description = "Service that executes auto start scripts";
+        path = [pkgs.zsh];
+        serviceConfig = {
+            WorkingDirectory = "${config.customOptions.userFolder}/scripts";
+            ExecStart = "${config.customOptions.userFolder}/scripts/setup_yakuake";
+        };
         wantedBy = [ "graphical-session.target" ];
     };
 
