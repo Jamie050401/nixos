@@ -80,7 +80,7 @@
             };
             autostartKDE = {
                 enable = true;
-                source = ../scripts/autostart/autostart.desktop;
+                source = ../dotfiles/autostart/autostart.desktop;
                 target = ".config/autostart/autostart.desktop";
             };
             gitConfig = {
