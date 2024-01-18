@@ -3,7 +3,6 @@
 let
     configFilesToLink = {
         "yakuakerc" = ../dotfiles/yakuakerc;
-        "/autostart/setup_yakuake" = ../scripts/setup_yakuake;
     };
 
     homeFilesToLink = {
