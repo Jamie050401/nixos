@@ -143,7 +143,7 @@
         gc = {
             automatic = true;
             dates = "weekly";
-            options = "--delte-older-than 10d";
+            options = "--delete-older-than 10d";
         };
     };
 
