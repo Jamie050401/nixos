@@ -1,2 +1,13 @@
 #!/usr/bin/env zsh
 
+sleep 2 # give yakuake a couple seconds before executing commands
+
+function instruct {
+    cmd="qdbus org.kde.yakuake $1"
+    eval $cmd &> /dev/null
+    sleep 0.5
+}
+
+instruct "/yakuake/sessions org.kde.yakuake.addSession"
+instruct "/yakuake/tabs org.kde.yakuake.setTabTitle 0 NixOS"
+instruct "/yakuake/sessions runCommandInTerminal 0 'cd ~/Development/Git.Repositories/nixos'"

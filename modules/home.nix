@@ -1,18 +1,5 @@
 { pkgs, osConfig, ... }:
 
-let
-    configFilesToLink = {
-        "yakuakerc" = ../dotfiles/yakuakerc;
-    };
-
-    homeFilesToLink = {
-        ".gitconfig" = ../dotfiles/.gitconfig;
-        ".gitignore" = ../dotfiles/.gitignore;
-    };
-
-    # Helper function
-    toSource = configDirName: dotfilesPath: { source = dotfilesPath; };
-in
 {
     programs = {
         git.enable = true;
@@ -82,9 +69,32 @@ in
             #vscodium
         ];
 
-        file = pkgs.lib.attrsets.mapAttrs toSource homeFilesToLink; # Symlinks homeFilesToLink to the ~/ directory
+        #file = pkgs.lib.attrsets.mapAttrs toSource homeFilesToLink; # Symlinks homeFilesToLink to the ~/ directory
+
+        file = {
+            gitIgnore = {
+                enable = true;
+                source = ../dotfiles/.gitignore;
+                target = ".gitignore";
+            };
+            gitConfig = {
+                enable = true;
+                source = ../dotfiles/.gitconfig;
+                target = ".gitconfig";
+            };
+            yakuakeConfig = {
+                enable = true;
+                source = ../dotfiles/yakuakerc;
+                target = ".config/yakuakerc";
+            };
+            yakuakeSetup = {
+                enable = true;
+                executable = true;
+                source = ../scripts/setup_yakuake;
+                target = ".config/autostart/setup_yakuake";
+            };
+        };
+
         stateVersion = "23.05";
     };
-
-    xdg.configFile = pkgs.lib.attrsets.mapAttrs toSource configFilesToLink; # Symlinks configFilesToLink to the ~/.config directory
 }
