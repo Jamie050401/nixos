@@ -72,9 +72,14 @@
     };
 
     #### System Packages
-    environment.systemPackages = with pkgs; [
-        # ...
-    ];
+    environment = {
+        systemPackages = with pkgs; [
+            # ...
+        ];
+        plasma5.excludePackages = with pkgs.libsForQt5; [
+            # ...
+        ];
+    };
 
     #### System Services
     services = {

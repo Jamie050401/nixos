@@ -25,6 +25,7 @@ in
             age
             firefox
             libsForQt5.yakuake
+            tmux
 
             # 1. VorpX
             # 2. VKB Configurator
