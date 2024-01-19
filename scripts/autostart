@@ -12,19 +12,12 @@ function instruct {
 }
 
 instruct "/yakuake/tabs setTabTitle 0 'NixOS'"
-instruct "/yakuake/sessions addSession"
-instruct "/yakuake/tabs setTabTitle 1 'Init'"
-
-# Sets session zero as the active session
-instruct "/yakuake/sessions raiseSession 0"
-
-# Preps the terminal for use
 instruct "/yakuake/sessions runCommandInTerminal 0 'tmux'"
 instruct "/yakuake/sessions runCommandInTerminal 0 'cd ~/Development/Git.Repositories/nixos'"
 instruct "/yakuake/sessions runCommandInTerminal 0 'clear'"
+instruct "/yakuake/sessions raiseSession 0"
 
 # Updates the system on startup
-instruct "/yakuake/sessions runCommandInTerminal 1 'cd ~/Development/Git.Repositories/nixos'"
-instruct "/yakuake/sessions runCommandInTerminal 1 'git pull'"
-instruct "/yakuake/sessions runCommandInTerminal 1 'sudo nixos-rebuild switch --flake .'" # Need to pass password to sudo command
-instruct "/yakuake/sessions removeSession 1"
+cd ~/Development/Git.Repositories/nixos
+git pull
+sudo nixos-rebuild switch --flake . # Need to pass password to sudo command
