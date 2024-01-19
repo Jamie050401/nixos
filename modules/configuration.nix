@@ -83,6 +83,20 @@
         printing.enable = true;
         flatpak.enable = true;
     };
+    systemd.services.systemUpdate = {
+        description = "Service that updates the system at startup";
+        #path = [pkgs.zsh];
+        #serviceConfig = {
+        #    WorkingDirectory = "";
+        #    ExecStart = "";
+        #};
+        script = ''
+            cd "${config.customOptions.userFolder}/Development/Git.Repositories/nixos"
+            git pull
+            nixos-rebuild switch --flake .
+        '';
+        wantedBy = ["graphical-session.target"];
+    };
 
     #### Users
     users = {
@@ -95,17 +109,6 @@
             ];
         };
     };
-
-    #### User Services
-#    systemd.user.services.autostartScripts = {
-#        description = "Service that executes auto start scripts";
-#        path = [pkgs.zsh];
-#        serviceConfig = {
-#            WorkingDirectory = "${config.customOptions.userFolder}/scripts";
-#            ExecStart = "${config.customOptions.userFolder}/scripts/autostart";
-#        };
-#        wantedBy = [ "graphical-session.target" ];
-#    };
 
     #### Locale
     time.timeZone = "Europe/London";
@@ -126,14 +129,6 @@
     #### Misc
     nixpkgs.config.allowUnfree = true;
     xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
-    system = {
-#        autoUpgrade = {
-#            enable = true;
-#            allowReboot = false;
-#            channel = "https://nixos.org/channels/nixos-23.11";
-#            dates = "weekly";
-#        };
-    };
     nix = {
         package = pkgs.nixFlakes;
         extraOptions = ''
