@@ -16,8 +16,3 @@ instruct "/yakuake/sessions runCommandInTerminal 0 'tmux'"
 instruct "/yakuake/sessions runCommandInTerminal 0 'cd ~/Development/Git.Repositories/nixos'"
 instruct "/yakuake/sessions runCommandInTerminal 0 'clear'"
 instruct "/yakuake/sessions raiseSession 0"
-
-# Updates the system on startup
-cd ~/Development/Git.Repositories/nixos
-git pull
-sudo nixos-rebuild switch --flake . # Need to pass password to sudo command
