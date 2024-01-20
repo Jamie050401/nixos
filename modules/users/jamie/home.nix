@@ -12,7 +12,7 @@ let
     };
 
     convertHomeFile = name: values: {
-        enable = true
+        enable = true;
         executable = pkgs.lib.elemAt values 0;
         source = pkgs.lib.elemAt values 1;
         target = pkgs.lib.elemAt values 2;
