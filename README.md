@@ -1,5 +1,9 @@
 # My NixOS Configurations
 
+## TODO
+1. Move from X11 to Wayland
+2. Look into including Xwayland Rootful
+
 ## NixOS Information
 
 ### /etc/nixos
