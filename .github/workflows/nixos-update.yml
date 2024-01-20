@@ -21,8 +21,9 @@ jobs:
             - name: Build and Update
               run: |
                   nix-channel --update
-                  nix build --profile /nix/var/nix/profiles/system .#nixosConfigurations.nixos-mini-pc.config.system.build.toplevel
+                  nix build .#nixosConfigurations.nixos-mini-pc.config.system.build.toplevel
                   nix-env --upgrade
+                  nix flake update
             #- name: Commit and Push
             #  uses: actions-js/push@master
             #  with:
