@@ -23,11 +23,11 @@ jobs:
                   nix flake check
                   nix build --profile /nix/var/nix/profiles/system .
                   nix flake update
-            - name: Commit and Push
-              uses: actions-js/push@master
-              with:
-                  github_token: ${{ secrets.TOKEN }}
-                  author_name: "github-actions"
-                  message: "Updated NixOS"
-                  branch: "main"
-                  empty: false
+            #- name: Commit and Push
+            #  uses: actions-js/push@master
+            #  with:
+            #      github_token: ${{ secrets.TOKEN }}
+            #      author_name: "github-actions"
+            #      message: "Updated NixOS"
+            #      branch: "main"
+            #      empty: false
