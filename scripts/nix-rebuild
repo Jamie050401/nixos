@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+currentDirectory=$(pwd)
+
+cd ~/Development/Git.Repositories/nixos
+sudo nixos-rebuild switch --flake .
+
+cd $currentDirectory

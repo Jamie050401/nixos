@@ -18,6 +18,7 @@
             };
             shellAliases = {
                 ll = "ls -l";
+                nix-rebuild = "${osConfig.customOptions.userFolder}/.scripts/nix-rebuild";
             };
         };
     };
@@ -85,6 +86,12 @@
                 executable = true;
                 source = ../../../scripts/autostart;
                 target = ".scripts/autostart";
+            };
+            nixRebuildScript = {
+                enable = true;
+                executable = true;
+                source = ../../../scripts/nix-rebuild;
+                target = ".scripts/nix-rebuild";
             };
             autostartKDE = {
                 enable = true;
