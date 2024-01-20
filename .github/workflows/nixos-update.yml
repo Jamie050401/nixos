@@ -21,13 +21,12 @@ jobs:
             - name: Build and Update
               run: |
                   nix-channel --update
-                  nix flake update
-                  nix flake check
-            #- name: Commit and Push
-            #  uses: actions-js/push@master
-            #  with:
-            #      github_token: ${{ secrets.TOKEN }}
-            #      author_name: "github-actions"
-            #      message: "Updated NixOS"
-            #      branch: "main"
-            #      empty: false
+                  nix flake check --refresh
+            - name: Commit and Push
+              uses: actions-js/push@master
+              with:
+                  github_token: ${{ secrets.TOKEN }}
+                  author_name: "github-actions"
+                  message: "Updated NixOS"
+                  branch: "main"
+                  empty: false
