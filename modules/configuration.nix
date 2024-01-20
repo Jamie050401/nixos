@@ -95,6 +95,7 @@
         #};
         script = ''
             cd "${config.customOptions.userFolder}/Development/Git.Repositories/nixos"
+            git config --global --add safe.directory "*"
             git pull
             nixos-rebuild switch --flake .
         '';
