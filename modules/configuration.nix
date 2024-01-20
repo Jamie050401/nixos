@@ -70,6 +70,9 @@
     #### System Packages
     programs = {
         zsh.enable = true;
+        git = {
+            enable = true;
+        };
     };
     environment = {
         systemPackages = with pkgs; [
@@ -85,19 +88,17 @@
     };
     systemd.services.systemUpdate = {
         description = "Service that updates the system at startup";
-        path = [pkgs.git];
+        #path = [pkgs.];
         #serviceConfig = {
         #    WorkingDirectory = "";
         #    ExecStart = "";
         #};
         script = ''
-            export HOME=${config.customOptions.userFolder}
-            git config --global --add safe.directory "*"
             cd "${config.customOptions.userFolder}/Development/Git.Repositories/nixos"
             git pull
             nixos-rebuild switch --flake .
         '';
-        wantedBy = ["graphical-session.target"];
+        wantedBy = ["multi-user.target"];
     };
 
     #### Users
