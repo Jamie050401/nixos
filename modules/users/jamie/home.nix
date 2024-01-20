@@ -2,20 +2,20 @@
 
 let
     homeFiles = {
-        # Name = Enable, Executable, Source, Target
-        "autostart" = [true true ../../../scripts/autostart ".scripts/autostart"];
-        "nix-rebuild" = [true true ../../../scripts/nix-rebuild ".scripts/nix-rebuild"];
-        "kde-autostart" = [true false ../../../dotfiles/autostart/autostart.desktop ".config/autostart/autostart.desktop"];
-        "git-config" = [true false ../../../dotfiles/.gitconfig ".gitconfig"];
-        "git-ignore" = [true false ../../../dotfiles/.gitignore ".gitignore"];
-        "yakuake-config" = [true false ../../../dotfiles/yakuakerc ".config/yakuakerc"];
+        # Name = Executable, Source, Target
+        "autostart" = [true ../../../scripts/autostart ".scripts/autostart"];
+        "nix-rebuild" = [true ../../../scripts/nix-rebuild ".scripts/nix-rebuild"];
+        "kde-autostart" = [false ../../../dotfiles/autostart/autostart.desktop ".config/autostart/autostart.desktop"];
+        "git-config" = [false ../../../dotfiles/.gitconfig ".gitconfig"];
+        "git-ignore" = [false ../../../dotfiles/.gitignore ".gitignore"];
+        "yakuake-config" = [false ../../../dotfiles/yakuakerc ".config/yakuakerc"];
     };
 
     convertHomeFile = name: values: {
-        enable = pkgs.lib.elemAt values 0;
-        executable = pkgs.lib.elemAt values 1;
-        source = pkgs.lib.elemAt values 2;
-        target = pkgs.lib.elemAt values 3;
+        enable = true
+        executable = pkgs.lib.elemAt values 0;
+        source = pkgs.lib.elemAt values 1;
+        target = pkgs.lib.elemAt values 2;
     };
 in {
     programs = {
