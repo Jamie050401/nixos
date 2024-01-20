@@ -99,41 +99,6 @@ in {
 
         file = pkgs.lib.mapAttrs convertHomeFile homeFiles;
 
-#        file = {
-#            autostartScript = {
-#                enable = true;
-#                executable = true;
-#                source = ../../../scripts/autostart;
-#                target = ".scripts/autostart";
-#            };
-#            nixRebuildScript = {
-#                enable = true;
-#                executable = true;
-#                source = ../../../scripts/nix-rebuild;
-#                target = ".scripts/nix-rebuild";
-#            };
-#            autostartKDE = {
-#                enable = true;
-#                source = ../../../dotfiles/autostart/autostart.desktop;
-#                target = ".config/autostart/autostart.desktop";
-#            };
-#            gitConfig = {
-#                enable = true;
-#                source = ../../../dotfiles/.gitconfig;
-#                target = ".gitconfig";
-#            };
-#            gitIgnore = {
-#                enable = true;
-#                source = ../../../dotfiles/.gitignore;
-#                target = ".gitignore";
-#            };
-#            yakuakeConfig = {
-#                enable = true;
-#                source = ../../../dotfiles/yakuakerc;
-#                target = ".config/yakuakerc";
-#            };
-#        };
-
         stateVersion = "23.05";
     };
 }
