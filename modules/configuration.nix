@@ -96,7 +96,7 @@
             git pull
             nixos-rebuild switch --flake .
         '';
-        wantedBy = ["multi-user.target"];
+        wantedBy = ["graphical-session.target"];
     };
 
     #### Users
