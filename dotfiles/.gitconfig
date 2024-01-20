@@ -5,5 +5,3 @@
     excludesfile = ~/.gitignore
 [init]
     defaultBranch = main
-[safe]
-    directory = "*"

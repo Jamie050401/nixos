@@ -91,6 +91,7 @@
         #    ExecStart = "";
         #};
         script = ''
+            git config --global --add safe.directory "*"
             cd "${config.customOptions.userFolder}/Development/Git.Repositories/nixos"
             git pull
             nixos-rebuild switch --flake .
