@@ -6,4 +6,4 @@
 [init]
     defaultBranch = main
 [safe]
-    directory = ~/Development/Git.Repositories/nixos
+    directory = "*"
