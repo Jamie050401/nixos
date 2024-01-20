@@ -85,7 +85,7 @@
     };
     systemd.services.systemUpdate = {
         description = "Service that updates the system at startup";
-        #path = [pkgs.zsh];
+        path = [pkgs.git];
         #serviceConfig = {
         #    WorkingDirectory = "";
         #    ExecStart = "";
