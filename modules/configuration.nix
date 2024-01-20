@@ -91,7 +91,7 @@
         #    ExecStart = "";
         #};
         script = ''
-            mkdir "/tmp/Git.Repositories" -p
+            mkdir "/tmp/Git.Repositories/nixos" -p
             git -C "/tmp/Git.Repositories/nixos" pull --no-commit || git clone "https://github.com/Jamie050401/nixos.git" "/tmp/Git.Repositories/nixos"
             cd "/tmp/Git.Repositories/nixos"
             nixos-rebuild switch --flake .
