@@ -21,6 +21,8 @@ jobs:
             - name: Build and Update
               run: |
                   nix flake check
+                  nix build --profile /nix/var/nix/profiles/system .
+                  nix flake update
             - name: Commit and Push
               uses: actions-js/push@master
               with:
