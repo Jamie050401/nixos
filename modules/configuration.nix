@@ -101,7 +101,7 @@
         description = "Updates/clones my local 'nixos' respository";
         path = [pkgs.git];
         script = ''
-            nixRepository = "${config.customOptions.userFolder}/Development/Git.Repositories/nixos"
+            nixRepository="${config.customOptions.userFolder}/Development/Git.Repositories/nixos"
             mkdir -p $nixRepository
             git -C $nixRepository pull || git clone "https://github.com/Jamie050401/nixos.git" $nixRepository
         '';
