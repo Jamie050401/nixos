@@ -83,21 +83,17 @@
         printing.enable = true;
         flatpak.enable = true;
     };
-    systemd.services.systemUpdate = {
-        description = "Service that updates the system at startup";
-        path = [pkgs.git];
-        #serviceConfig = {
-        #    WorkingDirectory = "";
-        #    ExecStart = "";
-        #};
-        script = ''
-            mkdir "/tmp/Git.Repositories/nixos" -p
-            git -C "/tmp/Git.Repositories/nixos" pull --no-commit || git clone "https://github.com/Jamie050401/nixos.git" "/tmp/Git.Repositories/nixos"
-            cd "/tmp/Git.Repositories/nixos"
-            nixos-rebuild switch --flake .
-        '';
-        wantedBy = ["multi-user.target"];
-    };
+    #systemd.services.systemUpdate = {
+    #    description = "";
+    #    path = [];
+    #    serviceConfig = {
+    #        WorkingDirectory = "";
+    #        ExecStart = "";
+    #    };
+    #    script = ''
+    #    '';
+    #    wantedBy = ["multi-user.target"];
+    #};
 
     #### Users
     users = {
