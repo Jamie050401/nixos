@@ -91,6 +91,7 @@
         #    ExecStart = "";
         #};
         script = ''
+            export HOME=${config.customOptions.userFolder}
             git config --global --add safe.directory "*"
             cd "${config.customOptions.userFolder}/Development/Git.Repositories/nixos"
             git pull
