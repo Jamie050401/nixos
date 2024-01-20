@@ -70,9 +70,6 @@
     #### System Packages
     programs = {
         zsh.enable = true;
-        git = {
-            enable = true;
-        };
     };
     environment = {
         systemPackages = with pkgs; [
@@ -94,9 +91,9 @@
         #    ExecStart = "";
         #};
         script = ''
-            cd "${config.customOptions.userFolder}/Development/Git.Repositories/nixos"
-            git config --global --add safe.directory "*"
-            git pull
+            mkdir "/tmp/Git.Repositories" -p
+            git -C "/tmp/Git.Repositories/nixos" pull --no-commit || git clone "https://github.com/Jamie050401/nixos.git" "/tmp/Git.Repositories/nixos"
+            cd "/tmp/Git.Repositories/nixos"
             nixos-rebuild switch --flake .
         '';
         wantedBy = ["multi-user.target"];
