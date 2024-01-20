@@ -20,7 +20,9 @@ jobs:
                   nix_path: nixpkgs=channel:nixos-23.11
             - name: Build and Update
               run: |
-                  nix build .#nixosConfigurations.nixos-mini-pc.config.system.build.toplevel
+                  nix-channel --update
+                  nix build --profile /nix/var/nix/profiles/system .#nixosConfigurations.nixos-mini-pc.config.system.build.toplevel
+                  nix-env --upgrade
             #- name: Commit and Push
             #  uses: actions-js/push@master
             #  with:
