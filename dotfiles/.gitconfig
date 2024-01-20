@@ -1,7 +1,9 @@
 [user]
-	name = Jamie050401
-	email = jamieallen050401@gmail.com
+    name = Jamie050401
+    email = jamieallen050401@gmail.com
 [core]
-	excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore
 [init]
-	defaultBranch = main
+    defaultBranch = main
+[safe]
+    directory = ~/Development/Git.Repositories/nixos
