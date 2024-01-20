@@ -1,0 +1,23 @@
+name: NixOS CI
+
+on:
+    push:
+        branches: [ "main" ]
+    pull_request:
+        branches: [ "main" ]
+
+jobs:
+    Update:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  ref: "main"
+                  fetch-depth: 0
+            - name: Install Nix
+              uses: cachix/install-nix-action@v22
+              with:
+                  nix_path: nixpkgs=channel:nixos-23.11
+            - name: Check Flake
+              run: nix flake check
