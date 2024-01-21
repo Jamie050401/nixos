@@ -31,7 +31,7 @@ in {
         tmux = {
             clock24 = true;
             enable = true;
-            mouse = false;
+            mouse = true;
             newSession = true;
         };
         zsh = {

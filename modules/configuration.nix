@@ -19,6 +19,13 @@
         };
     };
 
+    #### Secrets
+    sops = {
+        sops.defaultSopsFile = ./secrets/secrets.yaml;
+        sops.age.keyFile = "${config.customOptions.userFolder}/.age/id";
+        sops.age.generateKey = false;
+    };
+
     #### Hardware
     hardware = {
       pulseaudio.enable = false;
