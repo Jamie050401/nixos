@@ -21,11 +21,6 @@
                 userName = "jamie";
             };
 
-            customSecrets = {
-                fullName = "SECRET";
-                userEmail = "SECRET";
-            };
-
             system = "x86_64-linux";
             pkgs = import nixpkgs {
                 inherit system;
@@ -43,10 +38,6 @@
                             options.customOptions = lib.mkOption {
                                 type = lib.types.attrs;
                                 default = customOptions;
-                            };
-                            options.customSecrets = lib.mkOptions {
-                                type = lib.types.attrs;
-                                default = customSecrets;
                             };
                         })
 
