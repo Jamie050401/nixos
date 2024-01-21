@@ -15,20 +15,18 @@
 
     outputs = inputs@{ self, nixpkgs, home-manager, sops-nix, ... }:
         let
-            customOptions = {
-                hostName = "nixos-mini-pc";
-                userFolder = "/home/jamie";
-                userName = "jamie";
-            };
-
-            # TODO - Consider writeShellScript and runCommand (for adding secrets/secrets.yaml to nix store and then sym linking into ~/)
-
             system = "x86_64-linux";
             pkgs = import nixpkgs {
                 inherit system;
                 config.allowUnfree = true;
             };
             lib = nixpkgs.lib;
+
+            customOptions = {
+                hostName = "nixos-mini-pc";
+                userFolder = "/home/jamie";
+                userName = "jamie";
+            };
         in {
             nixosConfigurations = {
                 ${customOptions.hostName} = lib.nixosSystem {
@@ -45,6 +43,7 @@
 
                         # Configurations
                         sops-nix.nixosModules.sops
+                        ./modules/scripts.nix
                         ./modules/${customOptions.hostName}/hardware-configuration.nix
                         ./modules/configuration.nix
                         home-manager.nixosModules.home-manager {

@@ -41,9 +41,9 @@ in {
     sops = {
         age.generateKey = false;
         age.keyFile = "${config.customOptions.userFolder}/.age/id";
-        defaultSopsFile = ./secrets/secrets.yaml;
+        defaultSopsFile = /.secrets/secrets.yaml;
         defaultSopsFormat = "yaml";
-        validateSopsFiles = true;
+        validateSopsFiles = false;
         
         secrets."${config.customOptions.hostName}/fullName" = secretPermissions;
         secrets."${config.customOptions.hostName}/userEmail" = secretPermissions;

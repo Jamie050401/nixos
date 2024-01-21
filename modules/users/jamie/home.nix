@@ -55,6 +55,7 @@ in {
             age
             firefox
             libsForQt5.yakuake
+            neofetch
 
             # 1. VorpX
             # 2. VKB Configurator
