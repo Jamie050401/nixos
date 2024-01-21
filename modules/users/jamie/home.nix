@@ -25,8 +25,8 @@ in {
                 init = { defaultBranch = "main"; };
                 pull = { rebase = "false"; };
             };
-            userEmail = osConfig.sops.secrets."${osConfig.customOptions.hostName}/userEmail".path;
-            userName = osConfig.sops.secrets."${osConfig.customOptions.hostName}/fullName".path;
+            userEmail = pkgs.lib.readFile osConfig.sops.secrets."${osConfig.customOptions.hostName}/userEmail".path;
+            userName = pkgs.lib.readFile osConfig.sops.secrets."${osConfig.customOptions.hostName}/fullName".path;
         };
         tmux = {
             clock24 = true;

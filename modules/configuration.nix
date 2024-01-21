@@ -1,10 +1,11 @@
 { pkgs, config, ... }:
 
 let
-    secretPermissions = {
+    secretPermissions = fileName: {
         mode = "0440";
         owner = config.users.users.${config.customOptions.userName}.name;
         group = config.users.users.${config.customOptions.userName}.group;
+        path = "${config.customOptions.userFolder}/.secrets/${fileName}";
     };
 in {
     imports = [
@@ -49,8 +50,8 @@ in {
         defaultSopsFormat = "yaml";
         validateSopsFiles = true;
         
-        secrets."${config.customOptions.hostName}/fullName" = secretPermissions;
-        secrets."${config.customOptions.hostName}/userEmail" = secretPermissions;
+        secrets."${config.customOptions.hostName}/fullName" = secretPermissions "fullName";
+        secrets."${config.customOptions.hostName}/userEmail" = secretPermissions "userEmail";
     };
 
     #### Hardware

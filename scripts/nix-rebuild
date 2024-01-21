@@ -4,6 +4,6 @@ currentDirectory=$(pwd)
 
 cd ~/Development/Git.Repositories/nixos
 
-sudo nixos-rebuild switch --flake .
+sudo nixos-rebuild switch --impure --flake .
 
 cd $currentDirectory
