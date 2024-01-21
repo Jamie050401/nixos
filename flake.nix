@@ -15,13 +15,15 @@
 
     outputs = inputs@{ self, nixpkgs, home-manager, sops-nix, ... }:
         let
-            # 'SECRET will be replaced by sops-nix (any secrets shouldn't be used within flake.nix)'
             customOptions = {
-                fullName = "SECRET";
                 hostName = "nixos-mini-pc";
-                userEmail = "SECRET";
                 userFolder = "/home/jamie";
                 userName = "jamie";
+            };
+
+            customSecrets = {
+                fullName = "SECRET";
+                userEmail = "SECRET";
             };
 
             system = "x86_64-linux";
@@ -41,6 +43,10 @@
                             options.customOptions = lib.mkOption {
                                 type = lib.types.attrs;
                                 default = customOptions;
+                            };
+                            options.customSecrets = lib.mkOptions {
+                                type = lib.types.attrs;
+                                default = customSecrets;
                             };
                         })
 

@@ -1,6 +1,12 @@
 { pkgs, config, ... }:
 
-{
+let
+    secretPermissions = {
+        mode = "0440";
+        owner = config.users.users.${config.customOptions.userName}.name;
+        group = config.users.users.${config.customOptions.userName}.group;
+    };
+in {
     #### Boot
     boot = {
         kernelPackages = pkgs.linuxPackages_latest;
@@ -19,11 +25,32 @@
         };
     };
 
+    #### Users
+    users = {
+        defaultUserShell = pkgs.zsh;
+        users.${config.customOptions.userName} = {
+            isNormalUser = true;
+            extraGroups = [
+                "networkmanager"
+                "wheel"
+            ];
+        };
+    };
+
     #### Secrets
     sops = {
         defaultSopsFile = ./secrets/secrets.yaml;
         age.keyFile = "${config.customOptions.userFolder}/.age/id";
         age.generateKey = false;
+
+        secrets."${config.customOptions.hostName}/fullName" = secretPermissions;
+        secrets."${config.customOptions.hostName}/userEmail" = secretPermissions;
+    };
+    config = {
+        customSecrets = {
+            fullName = config.sops.secrets."${config.customOptions.hostName}/fullName";
+            userEmail = config.sops.secrets."${config.customOptions.hostName}/userEmail";
+        };
     };
 
     #### Hardware
@@ -91,18 +118,6 @@
         flatpak.enable = true;
     };
     
-    #### Users
-    users = {
-        defaultUserShell = pkgs.zsh;
-        users.${config.customOptions.userName} = {
-            isNormalUser = true;
-            extraGroups = [
-                "networkmanager"
-                "wheel"
-            ];
-        };
-    };
-
     #### User Services
     systemd.user.services.systemUpdate = {
         description = "Updates/clones my local 'nixos' respository";
