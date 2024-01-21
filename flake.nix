@@ -12,9 +12,11 @@
     outputs = inputs@{ self, nixpkgs, home-manager, ... }:
         let
             customOptions = {
-                userName = "jamie";
-                userFolder = "/home/jamie";
+                fullName = "Jamie Allen";
                 hostName = "nixos-mini-pc";
+                userEmail = "jamieallen050401@gmail.com";
+                userFolder = "/home/jamie";
+                userName = "jamie";
             };
 
             system = "x86_64-linux";

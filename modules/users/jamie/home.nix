@@ -6,7 +6,7 @@ let
         "autostart" = [true ../../../scripts/autostart ".scripts/autostart"];
         "nix-rebuild" = [true ../../../scripts/nix-rebuild ".scripts/nix-rebuild"];
         "kde-autostart" = [false ../../../dotfiles/autostart/autostart.desktop ".config/autostart/autostart.desktop"];
-        "git-config" = [false ../../../dotfiles/.gitconfig ".gitconfig"];
+        #"git-config" = [false ../../../dotfiles/.gitconfig ".gitconfig"];
         "git-ignore" = [false ../../../dotfiles/.gitignore ".gitignore"];
         "yakuake-config" = [false ../../../dotfiles/yakuakerc ".config/yakuakerc"];
     };
@@ -19,11 +19,20 @@ let
     };
 in {
     programs = {
-        git.enable = true;
+        git = {
+            enable = true;
+            extraConfig = {
+                core = { excludesfile = "${osConfig.customOptions.userFolder}/.gitignore"; };
+                init = { defaultBranch = main; };
+                pull = { rebase = false; };
+            };
+            userEmail = "${osConfig.customOptions.userEmail}";
+            userName = "${osConfig.customOptions.fullName}";
+        };
         tmux = {
             clock24 = true;
             enable = true;
-            mouse = true;
+            mouse = false;
             newSession = true;
         };
         zsh = {
