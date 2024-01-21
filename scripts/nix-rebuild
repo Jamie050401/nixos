@@ -7,7 +7,7 @@ cd ~/Development/Git.Repositories/nixos
 # Symlinks the secrets file in place
 storePath=$(nix-store --add-fixed sha256 "./secrets/secrets.yaml")
 sudo mkdir -p "/.secrets"
-sudo ln -s $storePath "/.secrets/secrets.yaml"
+sudo ln -f -s $storePath "/.secrets/secrets.yaml"
 
 # Rebuilds the system
 sudo nixos-rebuild switch --flake .
