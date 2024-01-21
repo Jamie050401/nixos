@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, ... }:
 
 let
     secretPermissions = {
@@ -39,11 +39,12 @@ in {
 
     #### Secrets
     sops = {
+        age.generateKey = false;
+        age.keyFile = "${config.customOptions.userFolder}/.age/id";
         defaultSopsFile = ./secrets/secrets.yaml;
         defaultSopsFormat = "yaml";
-        age.keyFile = "${config.customOptions.userFolder}/.age/id";
-        age.generateKey = false;
-
+        validateSopsFiles = true;
+        
         secrets."${config.customOptions.hostName}/fullName" = secretPermissions;
         secrets."${config.customOptions.hostName}/userEmail" = secretPermissions;
     };
