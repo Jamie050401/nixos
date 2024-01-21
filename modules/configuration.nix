@@ -39,10 +39,10 @@ in {
 
     #### Secrets
     sops = {
-        defaultSopsFile = "${config.customOptions.userFolder}/.secrets/secrets.yaml";
+        defaultSopsFile = ./secrets/secrets.yaml;
+        defaultSopsFormat = "yaml";
         age.keyFile = "${config.customOptions.userFolder}/.age/id";
         age.generateKey = false;
-        validateSopsFiles = false;
 
         secrets."${config.customOptions.hostName}/fullName" = secretPermissions;
         secrets."${config.customOptions.hostName}/userEmail" = secretPermissions;
