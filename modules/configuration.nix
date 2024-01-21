@@ -7,6 +7,10 @@ let
         group = config.users.users.${config.customOptions.userName}.group;
     };
 in {
+    imports = [
+        ./scripts.nix
+    ];
+
     #### Boot
     boot = {
         kernelPackages = pkgs.linuxPackages_latest;
