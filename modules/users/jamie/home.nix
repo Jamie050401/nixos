@@ -5,6 +5,7 @@ let
         # Name = Executable, Source, Target
         "autostart" = [true ../../../scripts/autostart ".scripts/autostart"];
         "nix-rebuild" = [true ../../../scripts/nix-rebuild ".scripts/nix-rebuild"];
+        "age-privatekey" = [false ${osConfig.customOptions.userFolder}/.age/id ".config/sops/age/keys.txt"] 
         "kde-autostart" = [false ../../../dotfiles/autostart/autostart.desktop ".config/autostart/autostart.desktop"];
         "git-ignore" = [false ../../../dotfiles/.gitignore ".gitignore"];
         "yakuake-config" = [false ../../../dotfiles/yakuakerc ".config/yakuakerc"];

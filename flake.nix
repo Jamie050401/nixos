@@ -15,10 +15,11 @@
 
     outputs = inputs@{ self, nixpkgs, home-manager, sops-nix, ... }:
         let
+            # 'SECRET will be replaced by sops-nix (any secrets shouldn't be used within flake.nix)'
             customOptions = {
-                fullName = "Jamie Allen";
+                fullName = "SECRET";
                 hostName = "nixos-mini-pc";
-                userEmail = "jamieallen050401@gmail.com";
+                userEmail = "SECRET";
                 userFolder = "/home/jamie";
                 userName = "jamie";
             };
