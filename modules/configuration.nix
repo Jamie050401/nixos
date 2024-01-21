@@ -46,19 +46,6 @@ in {
         secrets."${config.customOptions.hostName}/fullName" = secretPermissions;
         secrets."${config.customOptions.hostName}/userEmail" = secretPermissions;
     };
-    options.customSecrets = lib.mkOption {
-        type = lib.types.attrs;
-        default = {
-            fullName = config.sops.secrets."${config.customOptions.hostName}/fullName";
-            userEmail = config.sops.secrets."${config.customOptions.hostName}/userEmail";
-        };
-    };
-    #config = {
-    #    customSecrets = {
-    #        fullName = config.sops.secrets."${config.customOptions.hostName}/fullName";
-    #        userEmail = config.sops.secrets."${config.customOptions.hostName}/userEmail";
-    #    };
-    #};
 
     #### Hardware
     hardware = {
