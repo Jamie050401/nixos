@@ -1,8 +1,9 @@
 # My NixOS Configurations
 
 ## TODO
-1. Move from X11 to Wayland
-2. Look into including Xwayland Rootful
+1. FUCKING sops-nix - currently not placing secrets/secrets.yaml into the nix store
+2. Move from X11 to Wayland
+3. Look into including Xwayland Rootful
 
 ## NixOS Information
 
