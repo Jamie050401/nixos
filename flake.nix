@@ -21,6 +21,8 @@
                 userName = "jamie";
             };
 
+            # TODO - Consider writeShellScript and runCommand (for adding secrets/secrets.yaml to nix store and then sym linking into ~/)
+
             system = "x86_64-linux";
             pkgs = import nixpkgs {
                 inherit system;
