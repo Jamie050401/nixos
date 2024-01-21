@@ -6,7 +6,6 @@ let
         "autostart" = [true ../../../scripts/autostart ".scripts/autostart"];
         "nix-rebuild" = [true ../../../scripts/nix-rebuild ".scripts/nix-rebuild"];
         "kde-autostart" = [false ../../../dotfiles/autostart/autostart.desktop ".config/autostart/autostart.desktop"];
-        #"git-config" = [false ../../../dotfiles/.gitconfig ".gitconfig"];
         "git-ignore" = [false ../../../dotfiles/.gitignore ".gitignore"];
         "yakuake-config" = [false ../../../dotfiles/yakuakerc ".config/yakuakerc"];
     };
