@@ -13,7 +13,7 @@
         };
     };
 
-    outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+    outputs = inputs@{ self, nixpkgs, home-manager, sops-nix, ... }:
         let
             customOptions = {
                 fullName = "Jamie Allen";
