@@ -21,9 +21,9 @@
 
     #### Secrets
     sops = {
-        sops.defaultSopsFile = ./secrets/secrets.yaml;
-        sops.age.keyFile = "${config.customOptions.userFolder}/.age/id";
-        sops.age.generateKey = false;
+        defaultSopsFile = ./secrets/secrets.yaml;
+        age.keyFile = "${config.customOptions.userFolder}/.age/id";
+        age.generateKey = false;
     };
 
     #### Hardware
