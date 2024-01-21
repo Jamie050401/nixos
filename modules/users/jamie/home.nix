@@ -23,8 +23,8 @@ in {
             enable = true;
             extraConfig = {
                 core = { excludesfile = "${osConfig.customOptions.userFolder}/.gitignore"; };
-                init = { defaultBranch = main; };
-                pull = { rebase = false; };
+                init = { defaultBranch = "main"; };
+                pull = { rebase = "false"; };
             };
             userEmail = "${osConfig.customOptions.userEmail}";
             userName = "${osConfig.customOptions.fullName}";
