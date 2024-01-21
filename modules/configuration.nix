@@ -39,7 +39,7 @@ in {
 
     #### Secrets
     sops = {
-        defaultSopsFile = "${config.customOptions.userFolder}/path"/.secrets/secrets.yaml;
+        defaultSopsFile = "${config.customOptions.userFolder}/.secrets/secrets.yaml";
         age.keyFile = "${config.customOptions.userFolder}/.age/id";
         age.generateKey = false;
 
