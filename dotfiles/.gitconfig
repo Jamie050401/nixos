@@ -1,9 +1,0 @@
-[user]
-    name = Jamie050401
-    email = jamieallen050401@gmail.com
-[core]
-    excludesfile = ~/.gitignore
-[init]
-    defaultBranch = main
-[pull]
-    rebase = false
