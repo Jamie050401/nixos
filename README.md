@@ -5,7 +5,7 @@
 2. Look into including Xwayland Rootful
 3. Add KDE dotfiles into home-manager
 4. Get AppImage working
-5. Get MEGASync working (maybe AppImage?)
+5. Get MEGASync working (maybe AppImage? retry the native nix package)
 6. Migrate to AppImage version of pCloud
 7. Update flake.nix to pull in sops secrets from separate repository (https://discourse.nixos.org/t/how-to-clone-and-access-a-git-repo-with-nix-flakes/13113)
 8. Set user (jamie) password (read from file - secret in sops)
