@@ -41,8 +41,8 @@ in {
                 init = { defaultBranch = "main"; };
                 pull = { rebase = "false"; };
             };
-            userEmail = "jamieallen050401@gmail.com";
-            userName = "Jamie050401";
+            userEmail = "jamieallen050401@gmail.com"; # Relocate to secrets.nix (imported in flake.nix from separate repo and made available as option)
+            userName = "Jamie050401"; # Relocate to secrets.nix (imported in flake.nix from separate repo and made available as option)
         };
         zsh = {
             enable = true;
@@ -76,9 +76,7 @@ in {
             #wget
             #rclone
             #firefox
-            #thunderbird # Email client
-            #kate # Text editor
-            #libsForQt5.kdenlive # Video editor
+            #libsForQt5.kdenlive
             #obs-studio
             #mullvad-vpn
             #transmission
@@ -87,7 +85,6 @@ in {
             #otpclient # WinAuth alternative
             #wireguard-go
             #protonmail-bridge
-            #pcloud
             #go-sct # f.lux alternative
             #flameshot # ShareX alternative
             #hwinfo
