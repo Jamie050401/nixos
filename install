@@ -1,8 +1,6 @@
-#!/usr/bin/env bash
-
-# Ensures the required packages are available
-nix-shell -p zsh git openssh
-zsh
+#!/usr/bin/env nix-shell
+#!nix-shell -p zsh git openssh
+#!nix-shell -i zsh
 
 currentDirectory=$(pwd)
 nixRepository=/tmp/Git.Repositories/nixos
