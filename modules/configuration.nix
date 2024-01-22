@@ -125,16 +125,16 @@ in {
     };
 
     #### User Services
-    systemd.user.services.systemUpdate = {
-        description = "Updates/clones the local 'nixos' respository";
-        script = ''
-            source ${config.system.build.setEnvironment}
-            nixRepository="/tmp/Development/Git.Repositories/nixos"
-            mkdir -p $nixRepository
-            git -C $nixRepository pull || git clone "https://github.com/Jamie050401/nixos.git" $nixRepository
-        '';
-        wantedBy = ["graphical-session.target"];
-    };
+#    systemd.user.services.systemUpdate = {
+#        description = "Updates/clones the local 'nixos' respository";
+#        script = ''
+#            source ${config.system.build.setEnvironment}
+#            nixRepository="/tmp/Development/Git.Repositories/nixos"
+#            mkdir -p $nixRepository
+#            git -C $nixRepository pull || git clone "https://github.com/Jamie050401/nixos.git" $nixRepository
+#        '';
+#        wantedBy = ["graphical-session.target"];
+#    };
 
     #### Locale
     time.timeZone = "Europe/London";
