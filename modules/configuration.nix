@@ -24,14 +24,13 @@ in {
             efi = {
                 canTouchEfiVariables = true;
             };
-            #grub = {
-            #    enable = true;
-            #    device = "nodev";
-            #    efiSupport = true;
-            #    useOSProber = true;
-            #    configurationLimit = 30;
-            #};
-            systemd-boot.enable = true;
+            grub = {
+                enable = true;
+                device = "nodev";
+                efiSupport = true;
+                useOSProber = true;
+                configurationLimit = 30;
+            };
             timeout = 30;
         };
     };
