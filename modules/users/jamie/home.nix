@@ -20,6 +20,16 @@ let
         target = pkgs.lib.elemAt values 2;
     };
 in {
+    services.flatpak = {
+        packages = [
+            com.github.tchx84.Flatseal
+            nz.mega.MEGAsync
+        ];
+        remotes = {
+            "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+        };
+    };
+
     programs = {
         git = {
             enable = true;
