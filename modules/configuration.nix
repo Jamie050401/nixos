@@ -129,9 +129,9 @@ in {
 #        description = "Updates/clones the local 'nixos' respository";
 #        script = ''
 #            source ${config.system.build.setEnvironment}
-#            nixRepository="/tmp/Development/Git.Repositories/nixos"
+#            nixRepository="/tmp/Git.Repositories/nixos"
 #            mkdir -p $nixRepository
-#            git -C $nixRepository pull || git clone "https://github.com/Jamie050401/nixos.git" $nixRepository
+#            git -C $nixRepository pull || git clone "git@github.com:Jamie050401/nixos.git" $nixRepository
 #        '';
 #        wantedBy = ["graphical-session.target"];
 #    };

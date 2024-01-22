@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 currentDirectory=$(pwd)
-directory="/tmp/Git.Repositories/nixos"
+nixRepository="/tmp/Git.Repositories/nixos"
 
 # Handles parameters passed into the script
 while [[ "$#" -gt 0 ]]
@@ -14,7 +14,7 @@ esac
 shift
 done
 
-mkdir -p $directory
-git -C $directory pull || git clone "git@github.com:Jamie050401/nixos.git" $directory
+mkdir -p $nixRepository
+git -C $nixRepository pull || git clone "git@github.com:Jamie050401/nixos.git" $nixRepository
 sudo nixos-rebuild switch --flake .#$hostName
 cd $currentDirectory
