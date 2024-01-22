@@ -4,12 +4,13 @@
 
 currentDirectory=$(pwd)
 nixRepository=/tmp/Git.Repositories/nixos
-hasHostName=false
+hasHostName = false
 
 # Handles parameters passed into the script
 while [[ "$#" -gt 0 ]]
 do case $1 in
-    -h|--hostName) hasHostName=true; hostName=$2
+    -h|--hostName) hostName=$2
+    hasHostName=true
     shift;;
     *) echo "Unknown parameter: $1"
     exit;; 
