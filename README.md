@@ -34,4 +34,7 @@ This is the directory where the .nix configuration files exist.
      - Adds the desired url to active channels.  
 
 6. age-keygen -o ~/.age/id
-   - Generates an age private key
+   - Generates an age private/public key pair
+
+7. ssh-keygen
+   - Generates an ssh private/public key pair
