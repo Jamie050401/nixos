@@ -5,6 +5,12 @@
 2. Move from X11 to Wayland
 3. Look into including Xwayland Rootful
 4. Add KDE dotfiles into home-manager
+5. Get AppImage working
+6. Get MEGASync working (maybe AppImage?)
+7. Migrate to AppImage version of pCloud
+8. Update flake.nix to pull in sops secrets from separate repository
+9. Set user (jamie) password (read from file - secret in sops)
+10. Set root password (read from file - secret in sops)
 
 ## NixOS Information
 
