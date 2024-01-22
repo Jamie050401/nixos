@@ -8,7 +8,7 @@ let
         "nix-rebuild" = [true ../../../scripts/nix-rebuild ".scripts/nix-rebuild"];
         "nix-test" = [true ../../../scripts/nix-test ".scripts/nix-test"];
         # Dotfiles
-        "nix-config" = [true ../../../dotfiles/config.nix ".config/nixpkgs/config.nix"]
+        "nix-config" = [true ../../../dotfiles/config.nix ".config/nixpkgs/config.nix"];
         "kde-autostart" = [false ../../../dotfiles/kde/autostart/autostart.desktop ".config/autostart/autostart.desktop"];
         "git-ignore" = [false ../../../dotfiles/.gitignore ".gitignore"];
         "yakuake-config" = [false ../../../dotfiles/yakuakerc ".config/yakuakerc"];
