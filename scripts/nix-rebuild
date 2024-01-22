@@ -2,14 +2,14 @@
 
 currentDirectory=$(pwd)
 nixRepository=/tmp/Git.Repositories/nixos
-installBootloader=false
+installBootloader=0
 
 # Handles parameters passed into the script
 while [[ "$#" -gt 0 ]]
 do case $1 in
     -h|--hostName) hostName=$2
     shift;;
-    --install-bootloader) installBootloader=true;;
+    --install-bootloader) installBootloader=1;;
     *) echo "Unknown parameter: $1"
     exit;; 
 esac
@@ -19,7 +19,7 @@ done
 mkdir -p $nixRepository
 git -C $nixRepository pull || git clone "git@github.com:Jamie050401/nixos.git" $nixRepository
 
-if $installBootloader
+if [[ "$installBootloader" -gt 0 ]]
 then
     sudo nixos-rebuild boot --install-bootloader --flake .#$hostName
 else
