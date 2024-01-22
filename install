@@ -21,7 +21,6 @@ cd $nixRepository
 git pull || git clone "git@github.com:Jamie050401/nixos.git" $nixRepository
 if [[ -n $hostName ]]
 then
-    echo "Copied!"
     sudo cp /etc/nixos/hardware-configuration.nix $nixRepository/modules/$hostName/hardware-configuration.nix
     git add ./modules/$hostName/hardware-configuration.nix
     git commit -m "Updated hardware-configuration.nix"
