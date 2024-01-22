@@ -4,12 +4,12 @@
 
 currentDirectory=$(pwd)
 nixRepository=/tmp/Git.Repositories/nixos
-hostName=""
+hasHostName=false
 
 # Handles parameters passed into the script
 while [[ "$#" -gt 0 ]]
 do case $1 in
-    -h|--hostName) hostName=$2
+    -h|--hostName) hasHostName=true; hostName=$2
     shift;;
     *) echo "Unknown parameter: $1"
     exit;; 
@@ -20,7 +20,7 @@ done
 mkdir -p $nixRepository
 cd $nixRepository
 git pull || git clone "git@github.com:Jamie050401/nixos.git" $nixRepository
-if [[ $hostName != "" ]]
+if [[ ($hasHostName) ]]
 then
     sudo cp /etc/nixos/hardware-configuration.nix $nixRepository/modules/$hostName/hardware-configuration.nix
     git add ./modules/$hostName/hardware-configuration.nix
