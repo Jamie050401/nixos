@@ -24,6 +24,7 @@ in {
     services.flatpak = {
         packages = [
             "flathub:app/com.github.tchx84.Flatseal//stable"
+            "flathub:app/nz.mega.MEGAsync//stable"
         ];
         remotes = {
             "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
@@ -63,7 +64,6 @@ in {
             age
             firefox
             libsForQt5.yakuake
-            megasync
             pcloud
             sops
 
