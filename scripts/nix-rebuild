@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Handles parameters passed into the script
-directory="/tmp/Git.Repositories"
+directory="/tmp/Git.Repositories/nixos"
 while [[ "$#" -gt 0 ]]
 do case $1 in
     -h|--hostName) hostName=$2
