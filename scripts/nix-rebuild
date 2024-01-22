@@ -15,6 +15,6 @@ shift
 done
 
 mkdir -p $directory
-git -C pull $directory || git clone "git@github.com:Jamie050401/nixos.git" $directory
+git -C $directory pull || git clone "git@github.com:Jamie050401/nixos.git" $directory
 sudo nixos-rebuild switch --flake .#$hostName
 cd $currentDirectory
