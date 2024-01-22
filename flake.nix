@@ -2,23 +2,23 @@
     description = "NixOS Flake";
 
     inputs = {
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+        nixpkgs-23-11.url = "github:nixos/nixpkgs/nixos-23.11";
         nixpkgs-22-11.url = "github:nixos/nixpkgs/nixos-22.11";
         home-manager = {
             url = "github:nix-community/home-manager/release-23.11";
-            inputs.nixpkgs.follows = "nixpkgs";
+            inputs.nixpkgs.follows = "nixpkgs-23-11";
         };
         sops-nix = {
             url = "github:Mic92/sops-nix";
-            inputs.nixpkgs.follows = "nixpkgs";
+            inputs.nixpkgs.follows = "nixpkgs-23-11";
         };
         flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
     };
 
-    outputs = inputs@{ self, nixpkgs, nixpkgs-22-11, home-manager, sops-nix, flatpaks, ... }:
+    outputs = inputs@{ self, nixpkgs-23-11, nixpkgs-22-11, home-manager, sops-nix, flatpaks, ... }:
         let
             system = "x86_64-linux";
-            pkgs = import nixpkgs {
+            pkgs = import nixpkgs-23-11 {
                 inherit system;
                 config.allowUnfree = true;
             };
@@ -26,7 +26,7 @@
                 inherit system;
                 config.allowUnfree = true;
             };
-            lib = nixpkgs.lib;
+            lib = nixpkgs-23-11.lib;
 
             customOptions = {
                 hostName = "nixos-mini-pc";
