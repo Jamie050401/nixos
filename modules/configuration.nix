@@ -28,6 +28,7 @@ in {
                 enable = true;
                 device = "nodev";
                 efiSupport = true;
+                efiInstallAsRemovable = true;
                 useOSProber = true;
                 configurationLimit = 30;
             };
