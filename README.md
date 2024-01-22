@@ -4,6 +4,7 @@
 1. https://discourse.nixos.org/t/how-to-clone-and-access-a-git-repo-with-nix-flakes/13113
 2. Move from X11 to Wayland
 3. Look into including Xwayland Rootful
+4. Add KDE dotfiles into home-manager
 
 ## NixOS Information
 
