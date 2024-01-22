@@ -21,13 +21,19 @@ in {
     boot = {
         kernelPackages = pkgs.linuxPackages_latest;
         loader = {
-            grub = {
+            #grub = {
+            #    enable = true;
+            #    configurationLimit = 30;
+            #    device = "nodev";
+            #    efiSupport = true;
+            #    efiInstallAsRemovable = true;
+            #    useOSProber = true;
+            #};
+            systemd-boot = {
                 enable = true;
-                device = "nodev";
-                efiSupport = true;
-                efiInstallAsRemovable = true;
-                useOSProber = true;
                 configurationLimit = 30;
+                consoleMode = "auto";
+                editor = false;
             };
             timeout = 30;
         };
