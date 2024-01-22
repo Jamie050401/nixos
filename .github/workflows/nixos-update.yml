@@ -21,17 +21,11 @@ jobs:
               uses: cachix/install-nix-action@v25
               with:
                   nix_path: nixpkgs=channel:nixos-23.11
-            - name: Update flake.lock
-              uses: DeterminateSystems/update-flake-lock@main
-              with:
-                  pr-title: "Update flake.lock"
-                  pr-labels: |
-                    dependencies
-                    automated
             - name: Update NixOS
               run: |
                   nix channel --update
                   nix build .#nixosConfigurations.$HOST_NAME.config.system.build.toplevel
+                  nix flake update
             - name: Create PR
               id: create-pr
               uses: peter-evans/create-pull-request@v5
