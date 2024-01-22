@@ -1,12 +1,14 @@
 #!/usr/bin/env zsh
 
 currentDirectory=$(pwd)
-nixRepository="/tmp/Git.Repositories/nixos"
+nixRepository=/tmp/Git.Repositories/nixos
 
 # Handles parameters passed into the script
 while [[ "$#" -gt 0 ]]
 do case $1 in
     -h|--hostName) hostName=$2
+    shift;;
+    --install-bootloader) installBootloader=--installBootloader
     shift;;
     *) echo "Unknown parameter: $1"
     shift;; 
@@ -16,5 +18,5 @@ done
 
 mkdir -p $nixRepository
 git -C $nixRepository pull || git clone "git@github.com:Jamie050401/nixos.git" $nixRepository
-sudo nixos-rebuild boot --install-bootloader --flake .#$hostName
+sudo nixos-rebuild boot $installBootloader --flake .#$hostName #--install-bootloader
 cd $currentDirectory
