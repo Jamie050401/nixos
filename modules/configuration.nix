@@ -35,18 +35,6 @@ in {
         };
     };
 
-    #### Users
-    users = {
-        defaultUserShell = pkgs.zsh;
-        users.${config.customOptions.userName} = {
-            isNormalUser = true;
-            extraGroups = [
-                "networkmanager"
-                "wheel"
-            ];
-        };
-    };
-
     #### Secrets
     sops = {
         age.generateKey = false;
@@ -108,6 +96,7 @@ in {
 
     #### System Packages
     programs = {
+        git.enable = true;
         zsh.enable = true;
     };
     environment = {
@@ -122,13 +111,25 @@ in {
         printing.enable = true;
         flatpak.enable = true;
     };
-    
+
+    #### Users
+    users = {
+        defaultUserShell = pkgs.zsh;
+        users.${config.customOptions.userName} = {
+            isNormalUser = true;
+            extraGroups = [
+                "networkmanager"
+                "wheel"
+            ];
+        };
+    };
+
     #### User Services
     systemd.user.services.systemUpdate = {
-        description = "Updates/clones my local 'nixos' respository";
-        path = [pkgs.git];
+        description = "Updates/clones the local 'nixos' respository";
         script = ''
-            nixRepository="${config.customOptions.userFolder}/Development/Git.Repositories/nixos"
+            source ${config.system.build.setEnvironment}
+            nixRepository="/tmp/Development/Git.Repositories/nixos"
             mkdir -p $nixRepository
             git -C $nixRepository pull || git clone "https://github.com/Jamie050401/nixos.git" $nixRepository
         '';
