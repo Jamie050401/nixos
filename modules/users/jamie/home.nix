@@ -5,7 +5,7 @@ let
         # Name = Executable, Source, Target
         "autostart" = [true ../../../scripts/autostart ".scripts/autostart"];
         "nix-rebuild" = [true ../../../scripts/nix-rebuild ".scripts/nix-rebuild"];
-        "kde-autostart" = [false ../../../dotfiles/autostart/autostart.desktop ".config/autostart/autostart.desktop"];
+        "kde-autostart" = [false ../../../dotfiles/kde/autostart/autostart.desktop ".config/autostart/autostart.desktop"];
         "git-ignore" = [false ../../../dotfiles/.gitignore ".gitignore"];
         "yakuake-config" = [false ../../../dotfiles/yakuakerc ".config/yakuakerc"];
     };
@@ -25,8 +25,8 @@ in {
                 init = { defaultBranch = "main"; };
                 pull = { rebase = "false"; };
             };
-            userEmail = osConfig.sops.secrets."${osConfig.customOptions.hostName}/userEmail".path;
-            userName = osConfig.sops.secrets."${osConfig.customOptions.hostName}/fullName".path;
+            userEmail = "jamieallen050401@gmail.com";
+            userName = "Jamie050401";
         };
         tmux = {
             clock24 = true;

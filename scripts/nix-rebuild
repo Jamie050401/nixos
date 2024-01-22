@@ -2,7 +2,9 @@
 
 currentDirectory=$(pwd)
 
-cd ~/Development/Git.Repositories/nixos
+mkdir -p /tmp/Git.Repositories
+cd /tmp/Git.Repositories
+git pull || git clone "git@github.com:Jamie050401/nixos.git"
 
 sudo nixos-rebuild switch --flake .
 

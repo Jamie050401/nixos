@@ -1,7 +1,12 @@
 { pkgs, config, ... }:
 
 let
-    secretPermissions = fileName: {
+    rootSecretPermissions = {
+        mode = "0440";
+        owner = config.users.users.root.name;
+        group = config.users.users.root.group;
+    };
+    userSecretPermissions = fileName: {
         mode = "0440";
         owner = config.users.users.${config.customOptions.userName}.name;
         group = config.users.users.${config.customOptions.userName}.group;
@@ -24,7 +29,7 @@ in {
                 device = "nodev";
                 efiSupport = true;
                 useOSProber = true;
-                configurationLimit = 5;
+                configurationLimit = 30;
           };
         timeout = 30;
         };
@@ -48,10 +53,9 @@ in {
         age.keyFile = "${config.customOptions.userFolder}/.age/id";
         defaultSopsFile = ../secrets/secrets.yaml;
         defaultSopsFormat = "yaml";
-        validateSopsFiles = true;
+        validateSopsFiles = false;
         
-        secrets."${config.customOptions.hostName}/fullName" = secretPermissions "fullName";
-        secrets."${config.customOptions.hostName}/userEmail" = secretPermissions "userEmail";
+        #secrets."${config.customOptions.hostName}/fullName" = userSecretPermissions "fullName";
     };
 
     #### Hardware
