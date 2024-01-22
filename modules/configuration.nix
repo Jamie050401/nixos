@@ -24,28 +24,28 @@ in {
             efi = {
                 canTouchEfiVariables = true;
             };
-            #systemd-boot.enable = true;
-            grub = {
-                enable = true;
-                device = "nodev";
-                efiSupport = true;
-                useOSProber = true;
-                configurationLimit = 30;
+            systemd-boot.enable = true;
+            #grub = {
+            #    enable = true;
+            #    device = "nodev";
+            #    efiSupport = true;
+            #    useOSProber = true;
+            #    configurationLimit = 30;
           };
         timeout = 30;
         };
     };
 
     #### Secrets
-#    sops = {
-#        age.generateKey = false;
-#        age.keyFile = "${config.customOptions.userFolder}/.age/id";
-#        defaultSopsFile = ../secrets/secrets.yaml;
-#        defaultSopsFormat = "yaml";
-#        validateSopsFiles = false;
-#        
-#        #secrets."${config.customOptions.hostName}/fullName" = userSecretPermissions "fullName";
-#    };
+    sops = {
+        age.generateKey = false;
+        age.keyFile = "${config.customOptions.userFolder}/.age/id";
+        defaultSopsFile = ../secrets/secrets.yaml;
+        defaultSopsFormat = "yaml";
+        validateSopsFiles = false;
+        
+        #secrets."${config.customOptions.hostName}/fullName" = userSecretPermissions "fullName";
+    };
 
     #### Hardware
     hardware = {
@@ -126,16 +126,16 @@ in {
     };
 
     #### User Services
-#    systemd.user.services.systemUpdate = {
-#        description = "Updates/clones the local 'nixos' respository";
-#        script = ''
-#            source ${config.system.build.setEnvironment}
-#            nixRepository="/tmp/Git.Repositories/nixos"
-#            mkdir -p $nixRepository
-#            git -C $nixRepository pull || git clone "git@github.com:Jamie050401/nixos.git" $nixRepository
-#        '';
-#        wantedBy = ["graphical-session.target"];
-#    };
+    systemd.user.services.systemUpdate = {
+        description = "Updates/clones the local 'nixos' respository";
+        script = ''
+            source ${config.system.build.setEnvironment}
+            nixRepository="/tmp/Git.Repositories/nixos"
+            mkdir -p $nixRepository
+            git -C $nixRepository pull || git clone "git@github.com:Jamie050401/nixos.git" $nixRepository
+        '';
+        wantedBy = ["graphical-session.target"];
+    };
 
     #### Locale
     time.timeZone = "Europe/London";
