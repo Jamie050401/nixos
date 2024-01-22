@@ -1,10 +1,13 @@
 { pkgs, osConfig, ... }:
 
 let
+    # Name = Executable, Source, Target
     homeFiles = {
-        # Name = Executable, Source, Target
+        # Scripts
         "autostart" = [true ../../../scripts/autostart ".scripts/autostart"];
         "nix-rebuild" = [true ../../../scripts/nix-rebuild ".scripts/nix-rebuild"];
+        "nix-test" = [true ../../../scripts/nix-test ".scripts/nix-test"];
+        # Dotfiles
         "kde-autostart" = [false ../../../dotfiles/kde/autostart/autostart.desktop ".config/autostart/autostart.desktop"];
         "git-ignore" = [false ../../../dotfiles/.gitignore ".gitignore"];
         "yakuake-config" = [false ../../../dotfiles/yakuakerc ".config/yakuakerc"];
@@ -43,7 +46,8 @@ in {
             };
             shellAliases = {
                 ll = "ls -l";
-                nix-rebuild = "${osConfig.customOptions.userFolder}/.scripts/nix-rebuild";
+                nix-rebuild = "${osConfig.customOptions.userFolder}/.scripts/nix-rebuild --hostName ${osConfig.customOptions.hostName}";
+                nix-test = "${osConfig.customOptions.userFolder}/.scripts/nix-test --hostName ${osConfig.customOptions.hostName}";
             };
         };
     };

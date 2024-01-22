@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+
+# Handles parameters passed into the script
+directory="N/A"
+while [[ "$#" -gt 0 ]]
+do case $1 in
+    -h|--hostName) hostName=$2
+    shift;;
+    -d|--directory) directory=$2
+    shift;;
+    *) echo "Unknown parameter: $1"
+    shift;; 
+esac
+shift
+done
+
+if $directory = "N/A"
+then
+    sudo nixos-rebuild test --flake .#$hostName
+else
+    currentDirectory=$(pwd)
+    cd $directory
+    sudo nixos-rebuild test --flake .#$hostName
+    cd $currentDirectory
+fi
