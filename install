@@ -1,1 +1,22 @@
-scripts/nix-rebuild
+#!/usr/bin/env nix-shell
+#!nix-shell -p zsh git openssh
+#!nix-shell -i zsh
+
+currentDirectory=$(pwd)
+nixRepository=/tmp/Git.Repositories/nixos
+
+# Handles parameters passed into the script
+while [[ "$#" -gt 0 ]]
+do case $1 in
+    -h|--hostName) hostName=$2
+    shift;;
+    *) echo "Unknown parameter: $1"
+    exit;; 
+esac
+shift
+done
+
+mkdir -p $nixRepository
+git -C $nixRepository pull || git clone "git@github.com:Jamie050401/nixos.git" $nixRepository
+sudo nixos-rebuild boot --install-bootloader --flake .#$hostName
+cd $currentDirectory
