@@ -1,5 +1,5 @@
 keys:
-    - &nixos-mini-pc age1nr5k2ysvsqxdus6lcrcwjcx9xzjq45j4ec3xuq6tkqggjt4z998q57fmen
+    - &nixos-mini-pc age1967t40y67dsgge8q7pkkvfy694mw72k46mj352v42a4wwt06wfzqskp43u
 creation_rules:
     - path_regex: .secrets/[^/]+\.(yaml|json|env|ini)$
       key_groups:

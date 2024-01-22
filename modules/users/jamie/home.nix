@@ -26,7 +26,6 @@ in {
     services.flatpak = {
         packages = [
             "flathub:app/com.github.tchx84.Flatseal//stable"
-            "flathub:app/nz.mega.MEGAsync//stable"
             "flathub:app/com.usebottles.bottles//stable"
         ];
         remotes = {
