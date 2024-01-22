@@ -34,4 +34,8 @@ jobs:
                   branch: update
                   delete-branch: true
                   token: ${{ secrets.TOKEN }}
+                  committer: "GitHub Actions <actions@no-reply.github.com>"
+                  commit-message: "Updated NixOS"
                   title: "Update NixOS"
+                  body: "Automated update of NixOS"
+                  labels: automated
