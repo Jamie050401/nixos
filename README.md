@@ -1,7 +1,7 @@
 # My NixOS Configurations
 
 ## TODO
-1. Setup git-agecrypt for .gitconfig (and other files that contain information I want encrypted but that is fine to be available in the /nix/store)
+1. [https://discourse.nixos.org/t/how-to-clone-and-access-a-git-repo-with-nix-flakes/13113]
 2. Move from X11 to Wayland
 3. Look into including Xwayland Rootful
 
