@@ -104,9 +104,6 @@ in {
         zsh.enable = true;
     };
     environment = {
-        sessionVariables = {
-            MODULE_DIR = /run/current-system/kernel-modules/lib/modules;
-        };
         systemPackages = with pkgs; [
             # ...
         ];
