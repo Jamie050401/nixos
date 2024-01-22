@@ -62,22 +62,13 @@ in {
     home = {
         username = osConfig.customOptions.userName;
         homeDirectory = osConfig.customOptions.userFolder;
-        packages = [
+        packages = [ # stable-diffusion in docker?
             pkgs.age
             pkgs.firefox
+            pkgs.keepassxc
             pkgs.libsForQt5.yakuake
             pkgs-22-11.pcloud
             pkgs.sops
-
-            # 1. VorpX
-            # 2. VKB Configurator
-            # 3. Stable Diffusion (maybe running in a docker container?)
-            # 4. NT Lite
-
-            ## Flatpak
-            # 1. Flatseal
-            # 2. Discord
-            # 3. MEGASync
 
             #python311Full
             #temurin-jre-bin-18
@@ -93,7 +84,6 @@ in {
             #transmission
             #vlc
             #spotify
-            #keepassxc
             #otpclient # WinAuth alternative
             #wireguard-go
             #protonmail-bridge
