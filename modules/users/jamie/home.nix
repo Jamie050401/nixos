@@ -1,6 +1,8 @@
 { pkgs, osConfig, ... }:
 
 let
+    pkgs-22-11 = osConfig.customOptions.pkgs-22-11;
+
     # Name = Executable, Source, Target
     homeFiles = {
         # Scripts
@@ -60,12 +62,12 @@ in {
     home = {
         username = osConfig.customOptions.userName;
         homeDirectory = osConfig.customOptions.userFolder;
-        packages = with pkgs; [
-            age
-            firefox
-            libsForQt5.yakuake
-            pcloud
-            sops
+        packages = [
+            pkgs.age
+            pkgs.firefox
+            pkgs.libsForQt5.yakuake
+            pkgs-22-11.pcloud
+            pkgs.sops
 
             # 1. VorpX
             # 2. VKB Configurator

@@ -3,6 +3,7 @@
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+        nixpkgs-22-11.url = "github:nixos/nixpkgs/nixos-22.11";
         home-manager = {
             url = "github:nix-community/home-manager/release-23.11";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -14,10 +15,14 @@
         flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
     };
 
-    outputs = inputs@{ self, nixpkgs, home-manager, sops-nix, flatpaks, ... }:
+    outputs = inputs@{ self, nixpkgs, nixpkgs-22-11, home-manager, sops-nix, flatpaks, ... }:
         let
             system = "x86_64-linux";
             pkgs = import nixpkgs {
+                inherit system;
+                config.allowUnfree = true;
+            };
+            pkgs-22-11 = import nixpkgs-22-11 {
                 inherit system;
                 config.allowUnfree = true;
             };
@@ -25,6 +30,7 @@
 
             customOptions = {
                 hostName = "nixos-mini-pc";
+                pkgs-22-11 = pkgs-22-11;
                 userFolder = "/home/jamie";
                 userName = "jamie";
             };
