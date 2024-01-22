@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 # Handles parameters passed into the script
+directory="/tmp/Git.Repositories"
 while [[ "$#" -gt 0 ]]
 do case $1 in
     -h|--hostName) hostName=$2
@@ -12,12 +13,7 @@ shift
 done
 
 currentDirectory=$(pwd)
-
-mkdir -p /tmp/Git.Repositories
-cd /tmp/Git.Repositories
-git pull || git clone "git@github.com:Jamie050401/nixos.git"
-
-cd ./nixos
+mkdir -p $directory
+git -C pull $directory || git clone "git@github.com:Jamie050401/nixos.git" $directory
 sudo nixos-rebuild switch --flake .#$hostName
-
 cd $currentDirectory
