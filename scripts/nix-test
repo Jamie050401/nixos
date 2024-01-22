@@ -6,7 +6,7 @@ do case $1 in
     -h|--hostName) hostName=$2
     shift;;
     *) echo "Unknown parameter: $1"
-    shift;; 
+    exit;; 
 esac
 shift
 done
