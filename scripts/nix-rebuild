@@ -19,7 +19,8 @@ done
 mkdir -p $nixRepository
 git -C $nixRepository pull || git clone "git@github.com:Jamie050401/nixos.git" $nixRepository
 
-if $installBootloader then
+if [[ ($installBootloader) ]]
+then
     sudo nixos-rebuild boot --install-bootloader --flake .#$hostName
 else
     sudo nixos-rebuild boot --flake .#$hostName
