@@ -36,15 +36,15 @@ in {
     };
 
     #### Secrets
-    sops = {
-        age.generateKey = false;
-        age.keyFile = "${config.customOptions.userFolder}/.age/id";
-        defaultSopsFile = ../secrets/secrets.yaml;
-        defaultSopsFormat = "yaml";
-        validateSopsFiles = false;
-        
-        #secrets."${config.customOptions.hostName}/fullName" = userSecretPermissions "fullName";
-    };
+#    sops = {
+#        age.generateKey = false;
+#        age.keyFile = "${config.customOptions.userFolder}/.age/id";
+#        defaultSopsFile = ../secrets/secrets.yaml;
+#        defaultSopsFormat = "yaml";
+#        validateSopsFiles = false;
+#        
+#        #secrets."${config.customOptions.hostName}/fullName" = userSecretPermissions "fullName";
+#    };
 
     #### Hardware
     hardware = {
