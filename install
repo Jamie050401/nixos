@@ -4,7 +4,7 @@
 
 currentDirectory=$(pwd)
 nixRepository=/tmp/Git.Repositories/nixos
-hostName = $HOSTNAME
+hostName=$HOSTNAME
 
 # Handles parameters passed into the script
 while [[ "$#" -gt 0 ]]
