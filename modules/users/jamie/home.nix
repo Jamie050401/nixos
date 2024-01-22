@@ -22,8 +22,8 @@ let
 in {
     services.flatpak = {
         packages = [
-            com.github.tchx84.Flatseal
-            nz.mega.MEGAsync
+            "com.github.tchx84.Flatseal"
+            "nz.mega.MEGAsync"
         ];
         remotes = {
             "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
