@@ -8,7 +8,7 @@ while [[ "$#" -gt 0 ]]
 do case $1 in
     -h|--hostName) hostName=$2
     shift;;
-    --install-bootloader) installBootloader=--installBootloader;;
+    --installBootloader) installBootloader=--install-bootloader;;
     *) echo "Unknown parameter: $1"
     shift;; 
 esac
