@@ -4,6 +4,7 @@
 
 currentDirectory=$(pwd)
 nixRepository=/tmp/Git.Repositories/nixos
+hostName = $HOSTNAME
 
 # Handles parameters passed into the script
 while [[ "$#" -gt 0 ]]
@@ -18,5 +19,9 @@ done
 
 mkdir -p $nixRepository
 git -C $nixRepository pull || git clone "git@github.com:Jamie050401/nixos.git" $nixRepository
+sudo cp /etc/nixos/hardware-configuration.nix $nixRepository/modules/$hostName/hardware-configuration.nix
+git add ./modules/$hostName/hardware-configuration.nix
+git commit -m "Updated hardware-configuration.nix"
+git push
 sudo nixos-rebuild boot --install-bootloader --flake .#$hostName
 cd $currentDirectory
