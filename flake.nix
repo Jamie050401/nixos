@@ -11,9 +11,10 @@
             url = "github:Mic92/sops-nix";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
     };
 
-    outputs = inputs@{ self, nixpkgs, home-manager, sops-nix, ... }:
+    outputs = inputs@{ self, nixpkgs, home-manager, sops-nix, flatpaks, ... }:
         let
             system = "x86_64-linux";
             pkgs = import nixpkgs {
@@ -51,6 +52,7 @@
                                 useUserPackages = true;
                                 users.${customOptions.userName} = {
                                     imports = [
+                                        flatpaks.homeManagerModules.default
                                         ./modules/users/${customOptions.userName}/home.nix
                                     ];
                                 };
