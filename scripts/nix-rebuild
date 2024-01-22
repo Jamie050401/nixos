@@ -11,7 +11,7 @@ do case $1 in
     shift;;
     --installBootloader) installBootloader=true;;
     *) echo "Unknown parameter: $1"
-    shift;; 
+    exit;; 
 esac
 shift
 done
