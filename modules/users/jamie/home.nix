@@ -23,8 +23,6 @@ in {
     services.flatpak = {
         packages = [
             "flathub:app/com.github.tchx84.Flatseal//stable"
-            #"flathub:app/nz.mega.MEGAsync//stable"
-            "flathub:app/com.hunterwittenborn.Celeste//stable"
         ];
         remotes = {
             "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
@@ -62,6 +60,7 @@ in {
         homeDirectory = osConfig.customOptions.userFolder;
         packages = with pkgs; [
             age
+            celeste
             firefox
             libsForQt5.yakuake
             sops
