@@ -21,13 +21,11 @@ in {
     boot = {
         kernelPackages = pkgs.linuxPackages_latest;
         loader = {
-            efi = {
-                canTouchEfiVariables = true;
-            };
             grub = {
                 enable = true;
                 device = "nodev";
                 efiSupport = true;
+                efiInstallAsRemovable = true;
                 useOSProber = true;
                 configurationLimit = 30;
             };
@@ -100,6 +98,9 @@ in {
         zsh.enable = true;
     };
     environment = {
+        sessionVariables = {
+            MODULE_DIR = /run/current-system/kernel-modules/lib/modules;
+        };
         systemPackages = with pkgs; [
             # ...
         ];
