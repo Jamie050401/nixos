@@ -31,12 +31,6 @@ in {
             userEmail = "jamieallen050401@gmail.com";
             userName = "Jamie050401";
         };
-        tmux = {
-            clock24 = true;
-            enable = true;
-            mouse = true;
-            newSession = true;
-        };
         zsh = {
             enable = true;
             oh-my-zsh = {
