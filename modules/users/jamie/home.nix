@@ -59,7 +59,6 @@ in {
             age
             firefox
             libsForQt5.yakuake
-            neofetch
             sops
 
             # 1. VorpX
