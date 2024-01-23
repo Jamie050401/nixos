@@ -28,13 +28,31 @@
             };
             lib = nixpkgs-23-11.lib;
 
-            # TODO - Move user info into list of users and have the home-manager module iterate through it and create a user environment per entry in the list
-            #        Would need to determine appropriate method for making the user details available to configuration.nix and home.nix (along with any changes required in each)
             customOptions = {
                 hostName = "nixos-mini-pc";
                 pkgs-22-11 = pkgs-22-11;
                 userFolder = "/home/jamie";
                 userName = "jamie";
+
+                #users = {
+                #    jamie = {
+                #        userFolder = "/home/jamie";
+                #        secrets = {
+                #            # Non-credential secrets only (since these will be available in the nix store)
+                #            # User secrets read in from external source ...
+                #        };
+                #    };
+                #};
+            };
+
+            createUserEnvironment = userName: userData: {
+                # TODO - Need to pass the userName into home.nix
+                ${userName} = {
+                    imports = [
+                        flatpaks.homeManagerModules.default
+                        ./modules/users/${userName}/home.nix
+                    ];
+                };
             };
         in {
             nixosConfigurations = {
@@ -58,6 +76,9 @@
                             home-manager = {
                                 useGlobalPkgs = true;
                                 useUserPackages = true;
+                                #users = {
+                                #    lib.mapAttrs createUserEnvironment customOptions.users
+                                #};
                                 users.${customOptions.userName} = {
                                     imports = [
                                         flatpaks.homeManagerModules.default
