@@ -28,6 +28,8 @@
             };
             lib = nixpkgs-23-11.lib;
 
+            # TODO - Move user info into list of users and have the home-manager module iterate through it and create a user environment per entry in the list
+            #        Would need to determine appropriate method for making the user details available to configuration.nix and home.nix (along with any changes required in each)
             customOptions = {
                 hostName = "nixos-mini-pc";
                 pkgs-22-11 = pkgs-22-11;
