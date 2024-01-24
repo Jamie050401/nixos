@@ -2,10 +2,7 @@
 
 let
     pkgs = osConfig.customOptions.pkgs;
-
-    # stable-diffusion in docker?
-
-    packages = {
+    packages = { # stable-diffusion in docker?
         v23-11 = with pkgs.v23-11; [
             age
             firefox

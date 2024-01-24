@@ -27,28 +27,12 @@
             customOptions = {
                 hostName = "nixos-mini-pc";
                 pkgs = pkgs;
-                
-                userFolder = "/home/jamie";
+
                 userName = "jamie";
-
-                users = {
-                    jamie = {
-                        userFolder = "/home/jamie";
-                        secrets = {
-                            # Non-credential secrets only (since these will be available in the nix store)
-                            # User secrets read in from external source ...
-                        };
-                    };
-                };
-            };
-
-            createUserEnvironment = userName: userData: {
-                # TODO - Update 'currentUser'
-                ${userName} = {
-                    imports = [
-                        flatpaks.homeManagerModules.default
-                        ./modules/users/${userName}/home.nix
-                    ];
+                userFolder = "/home/jamie";
+                userSecrets = {
+                    # Non-credential secrets only (since these will be available in the nix store)
+                    # User secrets read in from external source ...
                 };
             };
         in {
@@ -57,17 +41,12 @@
                     inherit system;
                     specialArgs = { inherit inputs; };
                     modules = [
-                        # Options (available in config)
                         ({ lib, ... }: {
-                            options.customOptions = lib.mkOption {
-                                type = lib.types.attrs;
-                                default = customOptions;
-                            };
-
-                            # This option is only used by home-manager to track which user is currently being created
-                            options.utils.users.currentUser = lib.mkOption {
-                                type = lib.types.string;
-                                default = "";
+                            options = {
+                                customOptions = lib.mkOption {
+                                    type = lib.types.attrs;
+                                    default = customOptions;
+                                };
                             };
                         })
 
@@ -79,9 +58,6 @@
                             home-manager = {
                                 useGlobalPkgs = true;
                                 useUserPackages = true;
-                                #users = {
-                                #    lib.mapAttrs createUserEnvironment customOptions.users
-                                #};
                                 users.${customOptions.userName} = {
                                     imports = [
                                         flatpaks.homeManagerModules.default
