@@ -6,7 +6,7 @@ let
     # stable-diffusion in docker?
 
     packages = {
-        latest = with pkgs.v23-11; [
+        v23-11 = with pkgs.v23-11; [
             age
             firefox
             keepassxc
@@ -111,7 +111,7 @@ in {
     home = {
         username = osConfig.customOptions.userName;
         homeDirectory = osConfig.customOptions.userFolder;
-        packages = packages.latest ++ packages.v22-11;
+        packages = packages.v23-11 ++ packages.v22-11;
         file = pkgs.lib.mapAttrs convertHomeFile homeFiles;
         stateVersion = "23.05";
     };
