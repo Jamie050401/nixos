@@ -4,7 +4,6 @@
     inputs = {
         nixpkgs-v23-11.url = "github:nixos/nixpkgs/nixos-23.11";
         nixpkgs-v22-11.url = "github:nixos/nixpkgs/nixos-22.11";
-        secrets.url = "github:Jamie050401/nixos-secrets";
         home-manager = {
             url = "github:nix-community/home-manager/release-23.11";
             inputs.nixpkgs.follows = "nixpkgs-v23-11";
@@ -25,7 +24,6 @@
             };
             lib = nixpkgs-v23-11.lib;
 
-            #nixpkgs-v23-11.legacyPackages.${system}.mkShell { secrets = inputs.secrets };
             customOptions = {
                 hostName = "nixos-mini-pc";
                 pkgs = pkgs;
