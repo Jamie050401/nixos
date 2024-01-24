@@ -31,19 +31,19 @@
                 userFolder = "/home/jamie";
                 userName = "jamie";
 
-                #users = {
-                #    jamie = {
-                #        userFolder = "/home/jamie";
-                #        secrets = {
-                #            # Non-credential secrets only (since these will be available in the nix store)
-                #            # User secrets read in from external source ...
-                #        };
-                #    };
-                #};
+                users = {
+                    jamie = {
+                        userFolder = "/home/jamie";
+                        secrets = {
+                            # Non-credential secrets only (since these will be available in the nix store)
+                            # User secrets read in from external source ...
+                        };
+                    };
+                };
             };
 
             createUserEnvironment = userName: userData: {
-                # TODO - Need to pass the userName into home.nix
+                # TODO - Update 'currentUser'
                 ${userName} = {
                     imports = [
                         flatpaks.homeManagerModules.default
@@ -62,6 +62,12 @@
                             options.customOptions = lib.mkOption {
                                 type = lib.types.attrs;
                                 default = customOptions;
+                            };
+
+                            # This option is only used by home-manager to track which user is currently being created
+                            options.customOptions.users.currentUser = lib.mkOption {
+                                type = lib.types.string;
+                                default = "";
                             };
                         })
 
