@@ -2,8 +2,10 @@
     description = "NixOS Flake";
 
     inputs = {
-        nixpkgs-23-11.url = "github:nixos/nixpkgs/nixos-23.11";
-        nixpkgs-22-11.url = "github:nixos/nixpkgs/nixos-22.11";
+        nixpkgs = {
+            v23-11.url = "github:nixos/nixpkgs/nixos-23.11";
+            v22-11.url = "github:nixos/nixpkgs/nixos-22.11";
+        };
         home-manager = {
             url = "github:nix-community/home-manager/release-23.11";
             inputs.nixpkgs.follows = "nixpkgs-23-11";
@@ -15,22 +17,18 @@
         flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
     };
 
-    outputs = inputs@{ self, nixpkgs-23-11, nixpkgs-22-11, home-manager, sops-nix, flatpaks, ... }:
+    outputs = inputs@{ self, nixpkgs, home-manager, sops-nix, flatpaks, ... }:
         let
             system = "x86_64-linux";
-            pkgs = import nixpkgs-23-11 {
-                inherit system;
-                config.allowUnfree = true;
-            };
-            pkgs-22-11 = import nixpkgs-22-11 {
-                inherit system;
-                config.allowUnfree = true;
-            };
+            pkgs = import nixpkgs.v23-11 { inherit system; config.allowUnfree = true; };
+            pkgs.v22-11 = import nixpkgs.v22-11 { inherit system; config.allowUnfree = true; };
             lib = nixpkgs-23-11.lib;
 
             customOptions = {
                 hostName = "nixos-mini-pc";
-                pkgs-22-11 = pkgs-22-11;
+                pkgs = {
+                    v22-11 = pkgs.v22-11;
+                };
                 userFolder = "/home/jamie";
                 userName = "jamie";
 

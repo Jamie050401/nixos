@@ -1,7 +1,54 @@
 { pkgs, osConfig, ... }:
 
 let
-    pkgs-22-11 = osConfig.customOptions.pkgs-22-11;
+    pkgs.v22-11 = osConfig.customOptions.pkgs.v22-11;
+
+    # stable-diffusion in docker?
+    packages.latest = with pkgs; [
+        age
+        firefox
+        keepassxc
+        libsForQt5.yakuake
+        sops
+
+        #python311Full
+        #temurin-jre-bin-18
+        #dotnet-sdk_7
+        #wget
+        #rclone
+        #firefox
+        #libsForQt5.kdenlive
+        #obs-studio
+        #mullvad-vpn
+        #transmission
+        #vlc
+        #spotify
+        #otpclient # WinAuth alternative
+        #wireguard-go
+        #protonmail-bridge
+        #go-sct # f.lux alternative
+        #flameshot # ShareX alternative
+        #hwinfo
+        #docker
+        #docker-compose
+        #distrobox
+        #wine64
+        #winetricks
+        #protonup-qt
+        #protontricks
+        #lutris
+        #steam
+        #ryujinx
+        #yuzu-mainline
+        #citra-nightly
+        #prismlauncher-qt5
+        #kdiff3
+        #vscodium
+    ];
+
+    packages.v22-11 = with pkgs.v22-11 [
+        pcloud
+    ];
 
     # Name = Executable, Source, Target
     homeFiles = {
@@ -62,51 +109,8 @@ in {
     home = {
         username = osConfig.customOptions.userName;
         homeDirectory = osConfig.customOptions.userFolder;
-        packages = [ # stable-diffusion in docker?
-            pkgs.age
-            pkgs.firefox
-            pkgs.keepassxc
-            pkgs.libsForQt5.yakuake
-            pkgs-22-11.pcloud
-            pkgs.sops
-
-            #python311Full
-            #temurin-jre-bin-18
-            #dotnet-sdk_7
-            #wget
-            #rclone
-            #firefox
-            #libsForQt5.kdenlive
-            #obs-studio
-            #mullvad-vpn
-            #transmission
-            #vlc
-            #spotify
-            #otpclient # WinAuth alternative
-            #wireguard-go
-            #protonmail-bridge
-            #go-sct # f.lux alternative
-            #flameshot # ShareX alternative
-            #hwinfo
-            #docker
-            #docker-compose
-            #distrobox
-            #wine64
-            #winetricks
-            #protonup-qt
-            #protontricks
-            #lutris
-            #steam
-            #ryujinx
-            #yuzu-mainline
-            #citra-nightly
-            #prismlauncher-qt5
-            #kdiff3
-            #vscodium
-        ];
-
+        packages = packages.latest ++ packages.v22-11;
         file = pkgs.lib.mapAttrs convertHomeFile homeFiles;
-
         stateVersion = "23.05";
     };
 }
