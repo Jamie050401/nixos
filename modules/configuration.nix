@@ -31,12 +31,6 @@ in {
                 efiInstallAsRemovable = true;
                 useOSProber = true;
             };
-            #systemd-boot = {
-            #    enable = true;
-            #    configurationLimit = 30;
-            #    consoleMode = "auto";
-            #    editor = false;
-            #};
             timeout = 30;
         };
     };
