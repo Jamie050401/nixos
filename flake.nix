@@ -65,7 +65,7 @@
                             };
 
                             # This option is only used by home-manager to track which user is currently being created
-                            options.customOptions.users.currentUser = lib.mkOption {
+                            options.utils.users.currentUser = lib.mkOption {
                                 type = lib.types.string;
                                 default = "";
                             };
