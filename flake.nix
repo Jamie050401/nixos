@@ -27,6 +27,7 @@
             customOptions = {
                 hostName = "nixos-mini-pc";
                 pkgs = pkgs;
+                
                 userFolder = "/home/jamie";
                 userName = "jamie";
 
