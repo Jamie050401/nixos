@@ -20,15 +20,15 @@
     outputs = inputs@{ self, nixpkgs, home-manager, sops-nix, flatpaks, ... }:
         let
             system = "x86_64-linux";
-            pkgs = import nixpkgs.v23-11 { inherit system; config.allowUnfree = true; };
-            pkgs.v22-11 = import nixpkgs.v22-11 { inherit system; config.allowUnfree = true; };
-            lib = nixpkgs-23-11.lib;
+            pkgs = {
+                v23-11 = import nixpkgs.v23-11 { inherit system; config.allowUnfree = true; };
+                v22-11 = import nixpkgs.v22-11 { inherit system; config.allowUnfree = true; };
+            };
+            lib = nixpkgs.v23-11.lib;
 
             customOptions = {
                 hostName = "nixos-mini-pc";
-                pkgs = {
-                    v22-11 = pkgs.v22-11;
-                };
+                pkgs = pkgs;
                 userFolder = "/home/jamie";
                 userName = "jamie";
 

@@ -1,10 +1,10 @@
-{ pkgs, osConfig, ... }:
+{ osConfig, ... }:
 
 let
-    pkgs.v22-11 = osConfig.customOptions.pkgs.v22-11;
+    pkgs = osConfig.customOptions.pkgs;
 
     # stable-diffusion in docker?
-    packages.latest = with pkgs; [
+    packages.latest = with pkgs.v23-11; [
         age
         firefox
         keepassxc

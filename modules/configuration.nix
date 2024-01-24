@@ -1,6 +1,8 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 
 let
+    pkgs = config.customOptions.pkgs.v23-11
+
     rootSecretPermissions = {
         mode = "0440";
         owner = config.users.users.root.name;

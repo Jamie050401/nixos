@@ -1,6 +1,8 @@
-{ pkgs, lib, config, ... }:
+{ lib, config, ... }:
 
-{
+let
+    pkgs = config.customOptions.pkgs.v23-11;
+in {
     system.activationScripts = {
         ageKey.text = ''
             PATH=$PATH:${lib.makeBinPath [ pkgs.git ]}
