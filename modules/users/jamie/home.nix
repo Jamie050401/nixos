@@ -4,51 +4,53 @@ let
     pkgs = osConfig.customOptions.pkgs;
 
     # stable-diffusion in docker?
-    packages.latest = with pkgs.v23-11; [
-        age
-        firefox
-        keepassxc
-        libsForQt5.yakuake
-        sops
 
-        #python311Full
-        #temurin-jre-bin-18
-        #dotnet-sdk_7
-        #wget
-        #rclone
-        #firefox
-        #libsForQt5.kdenlive
-        #obs-studio
-        #mullvad-vpn
-        #transmission
-        #vlc
-        #spotify
-        #otpclient # WinAuth alternative
-        #wireguard-go
-        #protonmail-bridge
-        #go-sct # f.lux alternative
-        #flameshot # ShareX alternative
-        #hwinfo
-        #docker
-        #docker-compose
-        #distrobox
-        #wine64
-        #winetricks
-        #protonup-qt
-        #protontricks
-        #lutris
-        #steam
-        #ryujinx
-        #yuzu-mainline
-        #citra-nightly
-        #prismlauncher-qt5
-        #kdiff3
-        #vscodium
-    ];
+    packages = {
+        latest = with pkgs.v23-11; [
+            age
+            firefox
+            keepassxc
+            libsForQt5.yakuake
+            sops
 
-    packages.v22-11 = with pkgs.v22-11 [
-        pcloud
-    ];
+            #python311Full
+            #temurin-jre-bin-18
+            #dotnet-sdk_7
+            #wget
+            #rclone
+            #firefox
+            #libsForQt5.kdenlive
+            #obs-studio
+            #mullvad-vpn
+            #transmission
+            #vlc
+            #spotify
+            #otpclient # WinAuth alternative
+            #wireguard-go
+            #protonmail-bridge
+            #go-sct # f.lux alternative
+            #flameshot # ShareX alternative
+            #hwinfo
+            #docker
+            #docker-compose
+            #distrobox
+            #wine64
+            #winetricks
+            #protonup-qt
+            #protontricks
+            #lutris
+            #steam
+            #ryujinx
+            #yuzu-mainline
+            #citra-nightly
+            #prismlauncher-qt5
+            #kdiff3
+            #vscodium
+        ];
+        v22-11 = with pkgs.v22-11; [
+            pcloud
+        ];
+    };
 
     # Name = Executable, Source, Target
     homeFiles = {

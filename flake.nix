@@ -22,7 +22,7 @@
                 v23-11 = import nixpkgs-v23-11 { inherit system; config.allowUnfree = true; };
                 v22-11 = import nixpkgs-v22-11 { inherit system; config.allowUnfree = true; };
             };
-            lib = nixpkgs-v23-11.lib;
+            lib = pkgs.v23-11.lib;
 
             customOptions = {
                 hostName = "nixos-mini-pc";
