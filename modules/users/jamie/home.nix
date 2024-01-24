@@ -112,7 +112,7 @@ in {
         username = osConfig.customOptions.userName;
         homeDirectory = osConfig.customOptions.userFolder;
         packages = packages.v23-11 ++ packages.v22-11;
-        file = pkgs.lib.mapAttrs convertHomeFile homeFiles;
+        file = pkgs.v23-11.lib.mapAttrs convertHomeFile homeFiles;
         stateVersion = "23.05";
     };
 }
