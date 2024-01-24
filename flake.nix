@@ -26,14 +26,11 @@
 
             customOptions = {
                 hostName = "nixos-mini-pc";
+                gitName = "Jamie050401";
                 pkgs = pkgs;
-
                 userName = "jamie";
                 userFolder = "/home/jamie";
-                userSecrets = {
-                    # Non-credential secrets only (since these will be available in the nix store)
-                    # User secrets read in from external source ...
-                };
+                userEmail = "jamieallen050401@gmail.com";
             };
         in {
             nixosConfigurations = {

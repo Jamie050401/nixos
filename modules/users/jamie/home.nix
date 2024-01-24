@@ -45,6 +45,7 @@ let
             #vscodium
         ];
         v22-11 = with pkgs.v22-11; [
+            megasync
             pcloud
         ];
     };
@@ -87,8 +88,8 @@ in {
                 init = { defaultBranch = "main"; };
                 pull = { rebase = "false"; };
             };
-            userEmail = "jamieallen050401@gmail.com"; # Relocate to secrets.nix (imported in flake.nix from separate repo and made available as option)
-            userName = "Jamie050401"; # Relocate to secrets.nix (imported in flake.nix from separate repo and made available as option)
+            userEmail = osConfig.customOptions.userEmail;
+            userName = osConfig.customOptions.gitName;
         };
         zsh = {
             enable = true;
