@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-    pkgs = config.customOptions.pkgs.v23-11;
+    pkgs = config.customOptions.pkgs;
 
     rootSecretPermissions = {
         mode = "0440";
@@ -21,7 +21,7 @@ in {
 
     #### Boot
     boot = {
-        kernelPackages = pkgs.linuxPackages_latest;
+        kernelPackages = pkgs.v23-11.linuxPackages_latest;
         loader = {
             grub = {
                 enable = true;
@@ -106,7 +106,7 @@ in {
         zsh.enable = true;
     };
     environment = {
-        systemPackages = with pkgs; [
+        systemPackages = with pkgs.v23-11; [
             # ...
         ];
     };
@@ -120,7 +120,7 @@ in {
 
     #### Users
     users = {
-        defaultUserShell = pkgs.zsh;
+        defaultUserShell = pkgs.v23-11.zsh;
         users.${config.customOptions.userName} = {
             isNormalUser = true;
             extraGroups = [
@@ -159,10 +159,9 @@ in {
     console.keyMap = "uk";
 
     #### Misc
-    nixpkgs.config.allowUnfree = true;
-    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+    xdg.portal.extraPortals = [ pkgs.v23-11.xdg-desktop-portal-kde ];
     nix = {
-        package = pkgs.nixFlakes;
+        package = pkgs.v23-11.nixFlakes;
         extraOptions = ''
             experimental-features = nix-command flakes
         '';

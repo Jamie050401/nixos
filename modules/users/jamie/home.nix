@@ -67,9 +67,9 @@ let
 
     convertHomeFile = name: values: {
         enable = true;
-        executable = pkgs.lib.elemAt values 0;
-        source = pkgs.lib.elemAt values 1;
-        target = pkgs.lib.elemAt values 2;
+        executable = pkgs.v23-11.lib.elemAt values 0;
+        source = pkgs.v23-11.lib.elemAt values 1;
+        target = pkgs.v23-11.lib.elemAt values 2;
     };
 in {
     services.flatpak = {
