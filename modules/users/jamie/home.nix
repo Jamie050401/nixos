@@ -10,6 +10,7 @@ let
             libsForQt5.yakuake
             #megasync # This has to be built locally
             sops
+            vscodium
 
             #python311Full
             #temurin-jre-bin-18
@@ -43,7 +44,6 @@ let
             #citra-nightly
             #prismlauncher-qt5
             #kdiff3
-            #vscodium
         ];
         v22-11 = with pkgs.v22-11; [
             pcloud
