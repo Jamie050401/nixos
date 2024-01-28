@@ -42,7 +42,8 @@ in {
         defaultSopsFile = ../.secrets/secrets.yaml;
         defaultSopsFormat = "yaml";
         validateSopsFiles = false;
-        
+
+        secrets."${config.customOptions.hostName}/ssh-public-key" = userSecretPermissions "ssh-public-key";
         secrets."${config.customOptions.hostName}/ssh-private-key" = userSecretPermissions "ssh-private-key";
     };
 
@@ -155,6 +156,7 @@ in {
                 ln -f -s $privateKey "$destPath/id_ed25519"
                 ln -f -s $publicKey "$destPath/id_ed25519.pub"
             '';
+            wantedBy = ["graphical-session.target"];
         };
     };
 
