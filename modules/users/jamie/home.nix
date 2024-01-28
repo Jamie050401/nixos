@@ -8,6 +8,7 @@ let
             firefox
             keepassxc
             libsForQt5.yakuake
+            #megasync # This has to be built locally
             sops
 
             #python311Full
@@ -45,7 +46,6 @@ let
             #vscodium
         ];
         v22-11 = with pkgs.v22-11; [
-            megasync
             pcloud
         ];
     };

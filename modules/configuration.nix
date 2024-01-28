@@ -59,6 +59,7 @@ in {
         enable = true;
         ## Display Manager
         displayManager = {
+            defaultSession = "plasmawayland";
             sddm.enable = true;
         };
         ## Desktop Environment
