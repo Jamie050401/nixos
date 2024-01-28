@@ -108,7 +108,7 @@ in {
                 tooltipDelay = 5;
                 theme = "breeze-dark";
                 colorScheme = "BreezeDark";
-                wallpaper = "../dotfiles/kde/wallpapers/spaceman.jpg";
+                wallpaper = ../dotfiles/kde/wallpapers/spaceman.jpg;
             };
         };
         zsh = {
