@@ -43,7 +43,7 @@ in {
         defaultSopsFormat = "yaml";
         validateSopsFiles = false;
         
-        #secrets."${config.customOptions.hostName}/fullName" = userSecretPermissions "fullName";
+        secrets."${config.customOptions.hostName}/ssh-private-key" = userSecretPermissions "ssh-private-key";
     };
 
     #### Hardware
@@ -126,15 +126,34 @@ in {
     };
 
     #### User Services
-    systemd.user.services.systemUpdate = {
-        description = "Updates/clones my local 'nixos' respository";
-        script = ''
-            source ${config.system.build.setEnvironment}
-            nixRepository="${config.customOptions.userFolder}/Development/Git.Repositories/nixos"
-            mkdir -p $nixRepository
-            git -C $nixRepository pull || git clone "git@github.com:Jamie050401/nixos.git" $nixRepository
-        '';
-        wantedBy = ["graphical-session.target"];
+    systemd.user.services = {
+#        systemUpdate = {
+#            description = "Updates my NixOS installation";
+#            pkgs = [ pkgs.v23-11.nix pkgs.v23-11.git ];
+#            script = ''
+#                source ${config.system.build.setEnvironment}
+#                # ...
+#            '';
+#        };
+        repositoryUpdate = {
+            description = "Updates/clones my local 'nixos' respository";
+            path = [ pkgs.v23-11.git ];
+            script = ''
+                nixRepository="${config.customOptions.userFolder}/Development/Git.Repositories/nixos"
+                mkdir -p $nixRepository
+                git -C $nixRepository pull || git clone "git@github.com:Jamie050401/nixos.git" $nixRepository
+            '';
+            wantedBy = ["graphical-session.target"];
+        };
+        provisionSshKey = {
+            description = "Provisions SSH private key from secrets";
+            script = ''
+                destPath=${config.customOptions.hostName}/.ssh
+                sourcePath=${config.sops.secrets."${config.customOptions.hostName}/ssh-private-key".path}
+                mkdir -p $destPath
+                ln -f -s $sourcePath $destPath
+            '';
+        };
     };
 
     #### Locale
