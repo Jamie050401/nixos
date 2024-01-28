@@ -13,7 +13,7 @@
             inputs.nixpkgs.follows = "nixpkgs-v23-11";
         };
         flatpaks.url = "github:GermanBread/declarative-flatpak/stable";
-        plasma-manager.url = "github:pjones/plasma-manager"
+        plasma-manager.url = "github:pjones/plasma-manager";
     };
 
     outputs = inputs@{ self, nixpkgs-v23-11, nixpkgs-v22-11, home-manager, sops-nix, flatpaks, plasma-manager, ... }:
