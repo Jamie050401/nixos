@@ -128,14 +128,6 @@ in {
 
     #### User Services
     systemd.user.services = {
-#        systemUpdate = {
-#            description = "Updates my NixOS installation";
-#            pkgs = [ pkgs.v23-11.nix pkgs.v23-11.git ];
-#            script = ''
-#                source ${config.system.build.setEnvironment}
-#                # ...
-#            '';
-#        };
         repositoryUpdate = {
             description = "Updates/clones my local 'nixos' respository";
             path = [ pkgs.v23-11.git ];
