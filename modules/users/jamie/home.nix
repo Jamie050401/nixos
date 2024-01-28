@@ -91,6 +91,26 @@ in {
             userEmail = osConfig.customOptions.userEmail;
             userName = osConfig.customOptions.gitName;
         };
+        plasma = {
+            enable = true;
+            configFile = {
+                "kscreenlockerrc"."Daemon"."Autolock" = false;
+                "ksmserverrc"."General"."loginMode" = "emptySession";
+                "plasmanotifyrc"."Applications.org.kde.yakuake"."ShowBadges" = false;
+                "plasmanotifyrc"."Applications.org.kde.yakuake"."ShowInHistory" = false;
+                "plasmanotifyrc"."Applications.org.kde.yakuake"."ShowPopups" = false;
+            };
+            shortcuts = {
+                "yakuake"."toggle-window-state" = "F12";
+            };
+            workspace = {
+                clickItemTo = "select";
+                tooltipDelay = 5;
+                theme = "breeze-dark";
+                colorScheme = "BreezeDark";
+                wallpaper = "${pkgs.v23-11.libsForQt5.plasma-workspace-wallpapers}/share/wallpapers/Kay/contents/images/1080x1920.png";
+            };
+        };
         zsh = {
             enable = true;
             oh-my-zsh = {
