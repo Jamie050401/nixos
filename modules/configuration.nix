@@ -146,12 +146,14 @@ in {
             wantedBy = ["graphical-session.target"];
         };
         provisionSshKey = {
-            description = "Provisions SSH private key from secrets";
+            description = "Provisions SSH key from secrets";
             script = ''
                 destPath=${config.customOptions.hostName}/.ssh
-                sourcePath=${config.sops.secrets."${config.customOptions.hostName}/ssh-private-key".path}
+                publicKey=${config.sops.secrets."${config.customOptions.hostName}/ssh-public-key".path}
+                privateKey=${config.sops.secrets."${config.customOptions.hostName}/ssh-private-key".path}
                 mkdir -p $destPath
-                ln -f -s $sourcePath $destPath
+                ln -f -s $privateKey "$destPath/id_ed25519"
+                ln -f -s $publicKey "$destPath/id_ed25519.pub"
             '';
         };
     };
