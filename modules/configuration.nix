@@ -149,7 +149,7 @@ in {
         provisionSshKey = {
             description = "Provisions SSH key from secrets";
             script = ''
-                destPath=${config.customOptions.hostName}/.ssh
+                destPath=${config.customOptions.userFolder}/.ssh
                 publicKey=${config.sops.secrets."${config.customOptions.hostName}/ssh-public-key".path}
                 privateKey=${config.sops.secrets."${config.customOptions.hostName}/ssh-private-key".path}
                 mkdir -p $destPath
