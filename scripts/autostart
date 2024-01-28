@@ -15,7 +15,3 @@ instruct "/yakuake/tabs setTabTitle 0 'NixOS'"
 instruct "/yakuake/sessions runCommandInTerminal 0 'cd ~/Development/Git.Repositories/nixos'"
 instruct "/yakuake/sessions runCommandInTerminal 0 'clear'"
 instruct "/yakuake/sessions raiseSession 0"
-
-# Start pCloud
-pcloud &
-sleep 2

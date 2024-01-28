@@ -108,7 +108,7 @@ in {
                 tooltipDelay = 5;
                 theme = "breeze-dark";
                 colorScheme = "BreezeDark";
-                wallpaper = "${pkgs.v23-11.libsForQt5.plasma-workspace-wallpapers}/share/wallpapers/Kay/contents/images/1080x1920.png";
+                wallpaper = "../dotfiles/kde/wallpapers/spaceman.jpg";
             };
         };
         zsh = {
