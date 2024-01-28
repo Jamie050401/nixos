@@ -1,12 +1,10 @@
 # My NixOS Configurations
 
 ## TODO
-1. Move from X11 to Wayland
-2. Look into including Xwayland Rootful
-3. Add KDE dotfiles into home-manager
-4. Get AppImage working
-5. Set user (jamie) password (read from file - secret in sops)
-6. Set root password (read from file - secret in sops)
+1. Look into including Xwayland Rootful
+2. Get AppImage working
+3. Set user password (read from file - secret in sops)
+4. Set root password (read from file - secret in sops)
 
 ## NixOS Information
 
