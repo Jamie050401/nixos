@@ -128,18 +128,9 @@ in {
 
     #### User Services
     systemd.user.services = {
-        repositoryUpdate = {
-            description = "Updates/clones my local 'nixos' respository";
+        systemProvisioning = {
+            description = "Performs any/all necessary functions at system start-up";
             path = [ pkgs.v23-11.git ];
-            script = ''
-                nixRepository="${config.customOptions.userFolder}/Development/Git.Repositories/nixos"
-                mkdir -p $nixRepository
-                git -C $nixRepository pull || git clone "git@github.com:Jamie050401/nixos.git" $nixRepository
-            '';
-            wantedBy = ["graphical-session.target"];
-        };
-        provisionSshKey = {
-            description = "Provisions SSH key from secrets";
             script = ''
                 destPath=${config.customOptions.userFolder}/.ssh
                 publicKey=${config.sops.secrets."${config.customOptions.hostName}/ssh-public-key".path}
@@ -149,6 +140,10 @@ in {
                 ln -f -s $publicKey "$destPath/id_ed25519.pub"
                 chmod 600 "$destPath/id_ed25519"
                 chmod 600 "$destPath/id_ed25519.pub"
+
+                nixRepository="${config.customOptions.userFolder}/Development/Git.Repositories/nixos"
+                mkdir -p $nixRepository
+                git -C $nixRepository pull || git clone "git@github.com:Jamie050401/nixos.git" $nixRepository
             '';
             wantedBy = ["graphical-session.target"];
         };
