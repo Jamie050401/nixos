@@ -8,7 +8,6 @@ let
             firefox
             keepassxc
             libsForQt5.yakuake
-            #megasync # This has to be built locally
             sops
             vscodium
 

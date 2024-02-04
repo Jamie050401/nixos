@@ -147,6 +147,8 @@ in {
                 mkdir -p $destPath
                 ln -f -s $privateKey "$destPath/id_ed25519"
                 ln -f -s $publicKey "$destPath/id_ed25519.pub"
+                chmod 600 "$destPath/id_ed25519"
+                chmod 600 "$destPath/id_ed25519.pub"
             '';
             wantedBy = ["graphical-session.target"];
         };
